@@ -68,37 +68,28 @@ class SplashScreen(QWidget):
         self.frame.setObjectName('Frame')
         layout.addWidget(self.frame)
 
-        self.labelTitle = QLabel(self.frame)
-        self.labelTitle.setObjectName('LabelTitle')
-
-        # Center labels
-        self.labelTitle.resize(self.width() - 10, 150)
-        self.labelTitle.move(0, 40)  # x, y
-        self.labelTitle.setText('The Car++')
-        self.labelTitle.setAlignment(Qt.AlignCenter)
-
         self.labelDescription = QLabel(self.frame)
         self.labelDescription.resize(self.width() - 10, 50)
-        self.labelDescription.move(0, self.labelTitle.height())
+        self.labelDescription.move(0, 0)  # x, y
         self.labelDescription.setObjectName('LabelDesc')
-        self.labelDescription.setText('<strong>initializing #1</strong>')
+        self.labelDescription.setText('<strong>初始化中</strong>')
         self.labelDescription.setAlignment(Qt.AlignCenter)
 
         self.progressBar = QProgressBar(self.frame)
-        self.progressBar.resize(self.width() - 200 - 10, 50)
-        self.progressBar.move(100, self.labelDescription.y() + 130)
+        self.progressBar.resize(self.width() - 200 - 45, 50)
+        self.progressBar.move(100, self.height() - 130)
         self.progressBar.setAlignment(Qt.AlignCenter)
         self.progressBar.setFormat('%p%')
         self.progressBar.setTextVisible(True)
         self.progressBar.setRange(0, self.n)
         self.progressBar.setValue(20)
 
-        self.labelLoading = QLabel(self.frame)
-        self.labelLoading.resize(self.width() - 10, 50)
-        self.labelLoading.move(0, self.progressBar.y() + 70)
-        self.labelLoading.setObjectName('LabelLoading')
-        self.labelLoading.setAlignment(Qt.AlignCenter)
-        self.labelLoading.setText('Loading...')
+        # self.labelLoading = QLabel(self.frame)
+        # self.labelLoading.resize(self.width() - 10, 50)
+        # self.labelLoading.move(0, self.progressBar.y() + 70)
+        # self.labelLoading.setObjectName('LabelLoading')
+        # self.labelLoading.setAlignment(Qt.AlignCenter)
+        # self.labelLoading.setText('Loading...')
 
     def loading(self):
         self.progressBar.setValue(self.counter)
@@ -219,6 +210,7 @@ class MainWindow(QMainWindow):
         # help menu
         help_menu = menu.addMenu("&Help")
         help_menu.addAction("&Website", self.open_website)
+        help_menu.addSeparator()
         help_menu.addAction("About", self.about)
 
         # status bar

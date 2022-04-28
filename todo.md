@@ -2,5 +2,5 @@
 
 - [x] open image
 
-- [ ] splash screen image
+- [x] splash screen image
 - [ ] qss improvement

@@ -49,6 +49,8 @@ this is major layout style sheet file
 }
 #Frame{
     background-image: url(./resources/splashscr_864.png);
+    background-position: center;
+    background-repeat: no-repeat;
 }
 QFrame {
     background-color: #2F4454;

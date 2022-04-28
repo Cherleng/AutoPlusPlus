@@ -237,14 +237,14 @@ class MainWindow(QMainWindow):
         print("Open_camera: current image path: " + config.global_image_path)
         carplate(config.global_image_path)
 
-    # open image file and update global_image_path
+    # open image file and update config.global_image_path
     def open_img(self):
         print("Open image")
         self.append_log("Open image")
         selected_img_name, file_type = QFileDialog.getOpenFileName(
             self, "Open Image", filter='Image Files (*.png *.jpg *.jpeg *.bmp *.webp)')
         if selected_img_name == '':
-            # failed打开失败
+            # open image file failed
             print("Open image failed")
             self.append_log("Open image failed")
             return None

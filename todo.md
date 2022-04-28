@@ -4,3 +4,4 @@
 
 - [x] splash screen image
 - [ ] qss improvement
+- [ ] check exist funtion

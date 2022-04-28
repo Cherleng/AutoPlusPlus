@@ -31,6 +31,14 @@ this is major layout style sheet file
     font-size: 30px;
     padding: 20px;
 }
+#BtnOpenCamera:hover {
+    background-color: #007acc;
+    color: #93deed;
+}
+#BtnOpenCamera:pressed {
+    background-color: #c2ced1;
+    color: #93deed;
+}
 #LogPlainTextEdit {
     background-color: #d6e6f5;
     border-radius: 10px;

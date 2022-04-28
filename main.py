@@ -57,13 +57,15 @@ class SplashScreen(QWidget):
 
         self.timer = QTimer()
         self.timer.timeout.connect(self.loading)
-        self.timer.start(1)  # every _first_parameter_ ms
+        # every global_progress_bar_interval ms
+        self.timer.start(config.global_progress_bar_interval)
 
     def initUI(self):
         layout = QVBoxLayout()
         self.setLayout(layout)
 
         self.frame = QFrame()
+        self.frame.setObjectName('Frame')
         layout.addWidget(self.frame)
 
         self.labelTitle = QLabel(self.frame)
@@ -114,7 +116,7 @@ class SplashScreen(QWidget):
             self.myApp = MainWindow()
             self.myApp.show()
 
-        self.counter += 1
+        self.counter += config.global_progress_bar_step
 
 
 class MainWindow(QMainWindow):
@@ -194,10 +196,13 @@ class MainWindow(QMainWindow):
         # ampersand is shortcut
         open_dir_icon = self.style().standardIcon(QStyle.SP_DirOpenIcon)
         btn_open_dir = QAction(open_dir_icon, 'Open &Folder', self)
+
         open_img_icon = self.style().standardIcon(QStyle.SP_FileIcon)
         btn_open_img = QAction(open_img_icon, 'Open &Image', self)
+
         btn_open_dir.setStatusTip("Open a folder to images")
         btn_open_img.setStatusTip("Open an image")
+
         btn_open_dir.triggered.connect(self.open_dir)
         btn_open_img.triggered.connect(self.open_img)
 

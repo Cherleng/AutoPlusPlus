@@ -47,6 +47,9 @@ this is major layout style sheet file
     font-size: 16px;
     padding: 20px;
 }
+#Frame{
+    background-image: url(./resources/splashscr_864.png);
+}
 QFrame {
     background-color: #2F4454;
     color: rgb(220, 220, 220);

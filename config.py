@@ -17,3 +17,9 @@ global_resource_directory = "./resources/"
 
 # 默认图片路径
 global_image_path = 'Resources/car20.jpg'
+
+# 进度条脉冲间隔
+global_progress_bar_interval = 20
+
+# 进度条步长
+global_progress_bar_step = 2

@@ -296,12 +296,12 @@ class MainWindow(QMainWindow):
     def about(self):
         text = "Car++ is a car plate recognition software."
         text = "<center>" \
-            "<h1>Text Editor</h1>" \
+            "<h1>Car++</h1>" \
             "&#8291;" \
             "<img src=icon.svg>" \
             "</center>" \
             "<p>Version 0.0.7<br/>" \
-            "Copyright &copy; Company Inc.</p>"
+            "Copyleft &copy; Jxau Univ.</p>"
         QMessageBox.about(self, "About Car++",
                           text)
 

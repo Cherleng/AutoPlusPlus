@@ -10,11 +10,11 @@ make
 
 ## Todo
 
-- [ ] qss improvement
+- [ ] qss improvement,better UI
 - [ ] add icon
 - [ ] add setup.py
-- [ ] better UI
 - [ ] complete readme
+- [ ] i18n
 
 ## Contributors
 

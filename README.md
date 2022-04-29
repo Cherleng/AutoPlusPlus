@@ -11,12 +11,11 @@ make
 ## Todo
 
 - [ ] qss improvement
-- [ ] check file exist funtion
-- [x] help file(markdown, html)
+- [ ] add icon
+- [ ] add setup.py
 - [ ] better UI
 - [ ] complete readme
 
 ## Contributors
 
 Jiehuang Liu, [Guixin Chen](https://github.com/josedelinux) ,  [Mingkang  Chen](https://github.com/jarvis618) , Shuailei Zhao ,  HanZhen Fu
-

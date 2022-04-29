@@ -87,8 +87,8 @@ QProgressBar::chunk {
 }
 
 QMessageBox{
+    background-color: #93deed;
     color: #000000;
     border: none;
     font-size: 24px;
-    background-color: #93deed;
 }

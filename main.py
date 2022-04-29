@@ -123,21 +123,24 @@ class MainWindow(QMainWindow):
         self.tabs.setMovable(True)
 
         # add tabs
-        self.main_tab = QWidget()
+        self.cam_tab = QWidget()
+        self.img_tab = QWidget()
         self.log_tab = QWidget()
 
-        self.main_tab.setAutoFillBackground(True)
+        self.cam_tab.setAutoFillBackground(True)
+        self.img_tab.setAutoFillBackground(True)
         self.log_tab.setAutoFillBackground(True)
 
-        self.tabs.addTab(self.main_tab, "Main tab")
+        self.tabs.addTab(self.cam_tab, "Camera tab")
+        self.tabs.addTab(self.img_tab, "Image tab")
         self.tabs.addTab(self.log_tab, "Log tab")
 
-        # add widgets to tabs
-        self.labelMainTabTitle = QLabel(self.main_tab)
-        self.labelMainTabTitle.setObjectName('LabelMainTabTitle')
-        # self.labelMainTabTitle.setText('<strong>Car++</strong>')
-        self.labelMainTabTitle.setMinimumSize(QSize(16*10, 9*10))
-        self.labelMainTabTitle.setAlignment(Qt.AlignCenter)
+        # add widgets to cam_tab
+        self.labelCamTabTitle = QLabel(self.cam_tab)
+        self.labelCamTabTitle.setObjectName('LabelCamTabTitle')
+        # self.labelCamTabTitle.setText('<strong>Car++</strong>')
+        self.labelCamTabTitle.setMinimumSize(QSize(16*10, 9*10))
+        self.labelCamTabTitle.setAlignment(Qt.AlignCenter)
 
         self.btnOpenCamera = QPushButton("Open Camera")
         self.btnOpenCamera.setObjectName("BtnOpenCamera")
@@ -145,20 +148,26 @@ class MainWindow(QMainWindow):
         self.btnOpenCamera.setMinimumSize(QSize(16*5, 9*5))
         self.btnOpenCamera.clicked.connect(self.open_camera)
 
-        # main tab layout
-        self.tab_main_layout = QVBoxLayout()
-        self.tab_main_layout.addWidget(self.labelMainTabTitle)
-        self.tab_main_layout.addWidget(self.btnOpenCamera)
+        # cam tab layout
+        self.tab_cam_layout = QVBoxLayout()
+        self.tab_cam_layout.addWidget(self.labelCamTabTitle)
+        self.tab_cam_layout.addWidget(self.btnOpenCamera)
 
-        self.main_tab.setLayout(self.tab_main_layout)
+        self.cam_tab.setLayout(self.tab_cam_layout)
 
-        # set up log tab
-        # logPlainTextEdit = QPlainTextEdit(self.log_tab)
-        # logPlainTextEdit.setObjectName('LogPlainTextEdit')
-        # logPlainTextEdit.setMinimumSize(QSize(16*10, 9*10))
-        # logPlainTextEdit.setReadOnly(True)
+        # add widgets to img_tab
 
-        logging.basicConfig(level=logging.DEBUG)
+        self.btnDetectImg = QPushButton("Detect Image")
+        self.btnDetectImg.setObjectName("BtnDetectImg")
+        self.btnDetectImg.setToolTip("Detect image")
+        self.btnDetectImg.setMinimumSize(QSize(16*5, 9*5))
+        self.btnDetectImg.clicked.connect(self.detect_img)
+
+        # img tab layout
+        self.tab_img_layout = QVBoxLayout()
+        self.tab_img_layout.addWidget(self.btnDetectImg)
+
+        self.img_tab.setLayout(self.tab_img_layout)
 
         # instantiate Qlogger
         global qlogger
@@ -166,10 +175,8 @@ class MainWindow(QMainWindow):
 
         # set up Qtext handler
         Qtext_log_handler = Qlogging.QPlainTextEditLogger(self.log_tab)
-
         format = logging.Formatter('%(asctime)s - %(name)s - %(message)s')
         Qtext_log_handler.setFormatter(format)
-
         qlogger.addHandler(Qtext_log_handler)
 
         self.append_log('Logging started')
@@ -228,11 +235,15 @@ class MainWindow(QMainWindow):
     def append_log(self, text):
         qlogger.debug(text)
 
-    def open_camera(self):
-        self.append_log("Open_camera: current image path: " +
+    def detect_img(self):
+        self.append_log("detect_img: current image path: " +
                         config.global_image_path)
-        print("Open_camera: current image path: " + config.global_image_path)
+        print("detect_img: current image path: " + config.global_image_path)
         carplate(config.global_image_path)
+
+    def open_camera(self):
+        self.append_log("Opening camera ...")
+        print("Opening camera")
 
     # open image file and update config.global_image_path
     def open_img(self):
@@ -287,6 +298,8 @@ if __name__ == '__main__':
     # update path to absolute path
     config.global_resource_directory = os.path.abspath(
         config.global_resource_directory)
+
+    logging.basicConfig(level=logging.DEBUG)
 
     app = QApplication(sys.argv)
 

@@ -15,8 +15,7 @@ this is major layout style sheet file
     font-size: 30px;
     color: #e8e8eb;
 }
-#LabelMainTabTitle{
-    /*background-image: url(./resources/splashscr_864.png);*/
+#LabelCamTabTitle{
     background-repeat: no-repeat;
     background-position: center; 
     background-color: #ffffff;
@@ -36,6 +35,22 @@ this is major layout style sheet file
     color: #93deed;
 }
 #BtnOpenCamera:pressed {
+    background-color: #c2ced1;
+    color: #93deed;
+}
+#BtnDetectImg{
+    background-color: #93deed;
+    border-radius: 10px;
+    border: none;
+    color: #e8e8eb;
+    font-size: 30px;
+    padding: 20px;
+}
+#BtnDetectImg:hover {
+    background-color: #007acc;
+    color: #93deed;
+}
+#BtnDetectImg:pressed {
     background-color: #c2ced1;
     color: #93deed;
 }

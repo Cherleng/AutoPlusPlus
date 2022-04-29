@@ -13,7 +13,7 @@ configuration
 """
 
 # 默认目录位置
-global_resource_directory = "./resources/Detection/"
+global_resource_directory = "./Resources/Detection/"
 
 # 默认图片路径
 global_image_path = './Resources/Detection/car20.jpg'
@@ -23,3 +23,8 @@ global_progress_bar_interval = 2
 
 # 进度条步长
 global_progress_bar_step = 2
+
+# help file
+global_help_markdown_path = "./Resources/help.md"
+
+global_help_html_path = "./Resources/help.html"

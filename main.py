@@ -11,10 +11,9 @@ __email__ = "Valentinofreeman@163.com"
 __status__ = "Prototype"
 
 
-from fileinput import filename
 from Carplate import *
-import config
-import os
+import Config
+import Utils
 import sys
 import time
 import logging
@@ -58,7 +57,7 @@ class SplashScreen(QWidget):
         self.timer = QTimer()
         self.timer.timeout.connect(self.loading)
         # every global_progress_bar_interval ms
-        self.timer.start(config.global_progress_bar_interval)
+        self.timer.start(Config.global_progress_bar_interval)
 
     def initUI(self):
         layout = QVBoxLayout()
@@ -107,7 +106,7 @@ class SplashScreen(QWidget):
             self.myApp = MainWindow()
             self.myApp.show()
 
-        self.counter += config.global_progress_bar_step
+        self.counter += Config.global_progress_bar_step
 
 
 class MainWindow(QMainWindow):
@@ -181,8 +180,8 @@ class MainWindow(QMainWindow):
 
         self.append_log('Logging started')
         self.append_log("Default image directory is: " +
-                        config.global_resource_directory)
-        self.append_log("Default image path is " + config.global_image_path)
+                        Config.global_resource_directory)
+        self.append_log("Default image path is " + Config.global_image_path)
 
         # log tab layout
         self.tab_log_layout = QVBoxLayout()
@@ -217,6 +216,8 @@ class MainWindow(QMainWindow):
         # help menu
         help_menu = menu.addMenu("&Help")
         help_menu.addAction("&Website", self.open_website)
+        help_menu.addAction("Show Help (&Markdown)", self.open_help_markdown)
+        help_menu.addAction("Show Help (HTML)", self.open_help_html)
         help_menu.addSeparator()
         help_menu.addAction("About", self.about)
 
@@ -237,9 +238,9 @@ class MainWindow(QMainWindow):
 
     def detect_img(self):
         self.append_log("detect_img: current image path: " +
-                        config.global_image_path)
-        print("detect_img: current image path: " + config.global_image_path)
-        carplate(config.global_image_path)
+                        Config.global_image_path)
+        print("detect_img: current image path: " + Config.global_image_path)
+        carplate(Config.global_image_path)
 
     def open_camera(self):
         self.append_log("Opening camera ...")
@@ -259,10 +260,10 @@ class MainWindow(QMainWindow):
         else:
             print("selected: "+selected_img_name)
             self.append_log("selected: "+selected_img_name)
-            config.global_image_path = selected_img_name
-            print("Current image path is: " + config.global_image_path)
+            Config.global_image_path = selected_img_name
+            print("Current image path is: " + Config.global_image_path)
             self.append_log("Current image path is: " +
-                            config.global_image_path)
+                            Config.global_image_path)
 
     # open image file directory
     def open_dir(self):
@@ -276,15 +277,33 @@ class MainWindow(QMainWindow):
         else:
             print("selected: "+selected_dir)
             self.append_log("selected: "+selected_dir)
-            config.global_resource_directory = selected_dir
+            Config.global_resource_directory = selected_dir
             print("Current image directory is: " +
-                  config.global_resource_directory)
+                  Config.global_resource_directory)
             self.append_log("Current image directory is: " +
-                            config.global_resource_directory)
+                            Config.global_resource_directory)
+
+    def open_help_markdown(self):
+        print("Opening help markdown")
+        self.append_log("Opening help markdown")
+        Utils.openfile_sys(Config.global_help_markdown_path)
+
+    def open_help_html(self):
+        print("Opening help html")
+        self.append_log("Opening help html")
+        Utils.openfile_sys(Config.global_help_html_path)
 
     def about(self):
+        text = "Car++ is a car plate recognition software."
+        text = "<center>" \
+            "<h1>Text Editor</h1>" \
+            "&#8291;" \
+            "<img src=icon.svg>" \
+            "</center>" \
+            "<p>Version 0.0.7<br/>" \
+            "Copyright &copy; Company Inc.</p>"
         QMessageBox.about(self, "About Car++",
-                          "Car++ is a car plate recognition software.")
+                          text)
 
     def open_website(self):
         import webbrowser
@@ -296,8 +315,13 @@ if __name__ == '__main__':
     # QApplication.setAttribute(Qt.HighDpiScaleFactorRoundingPolicy.PassThrough)
 
     # update path to absolute path
-    config.global_resource_directory = os.path.abspath(
-        config.global_resource_directory)
+    Config.global_resource_directory = Utils.update_path(
+        Config.global_resource_directory)
+    Config.global_image_path = Utils.update_path(Config.global_image_path)
+    Config.global_help_html_path = Utils.update_path(
+        Config.global_help_html_path)
+    Config.global_help_markdown_path = Utils.update_path(
+        Config.global_help_markdown_path)
 
     logging.basicConfig(level=logging.DEBUG)
 

@@ -2,7 +2,7 @@ __author__ = "Jiehuang Liu, Guixin Chen <Valentinofreeman@163.com>"
 __credits__ = ["Jiehuang Liu", "Guixin Chen", "Mingkang Chen",
                "Shuailei Zhao", "HanZhen Fu"]
 __license__ = "MIT"
-__version__ = "0.0.6"
+__version__ = "0.0.7"
 __maintainer__ = "Jiehuang Liu, Guixin Chen"
 __email__ = "Valentinofreeman@163.com"
 __status__ = "Prototype"

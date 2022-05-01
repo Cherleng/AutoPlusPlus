@@ -4,7 +4,7 @@ __credits__ = ["Jiehuang Liu", "Guixin Chen",  "Mingkang Chen",
 __license__ = "MIT"
 __version__ = "0.0.7"
 __maintainer__ = "Jiehuang Liu,Guixin Chen"
-__email__ = ""
+__email__ = "2501687225"
 __status__ = "Prototype"
 
 

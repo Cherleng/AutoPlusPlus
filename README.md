@@ -15,7 +15,7 @@ make
 - [ ] add setup.py
 - [ ] complete readme
 - [ ] i18n
-- [ ] ttt
+- [ ] tttt
 
 ## Contributors
 

@@ -18,4 +18,4 @@ make
 
 ## Contributors
 
-Jiehuang Liu, [Guixin Chen](https://github.com/josedelinux) ,  [Mingkang  Chen](https://github.com/jarvis618) , Shuailei Zhao ,  HanZhen Fu
+[Jiehuang Liu](https://github.com/Cherleng/), [Guixin Chen](https://github.com/josedelinux) ,  [Mingkang  Chen](https://github.com/jarvis618) , Shuailei Zhao ,  HanZhen Fu

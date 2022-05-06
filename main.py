@@ -192,10 +192,10 @@ class MainWindow(QMainWindow):
         # actions
         # ampersand is shortcut
         open_dir_icon = self.style().standardIcon(QStyle.SP_DirOpenIcon)
-        btn_open_dir = QAction(open_dir_icon, 'Open &Folder', self)
+        btn_open_dir = QAction(open_dir_icon, self.tr("Open &Folder"), self)
 
         open_img_icon = self.style().standardIcon(QStyle.SP_FileIcon)
-        btn_open_img = QAction(open_img_icon, 'Open &Image', self)
+        btn_open_img = QAction(open_img_icon, self.tr("Open &Image"), self)
 
         btn_open_dir.setStatusTip(self.tr("Open a folder to images"))
         btn_open_img.setStatusTip(self.tr("Open an image"))
@@ -207,27 +207,28 @@ class MainWindow(QMainWindow):
         menu = self.menuBar()
 
         # file menu
-        file_menu = menu.addMenu("&File")
+        file_menu = menu.addMenu(self.tr("&File"))
         file_menu.addAction(btn_open_dir)
         file_menu.addAction(btn_open_img)
         file_menu.addSeparator()
-        file_menu.addAction("E&xit", self.close)
+        file_menu.addAction(self.tr("E&xit"), self.close)
 
-        option_menu = menu.addMenu("&Options")
-        option_menu.addAction("&Preferences", self.preferences)
+        option_menu = menu.addMenu(self.tr("&Options"))
+        option_menu.addAction(self.tr("&Preferences"), self.preferences)
         option_menu.addSeparator()
 
-        option_language_menu = option_menu.addMenu("&Language")
+        option_language_menu = option_menu.addMenu(self.tr("&Language"))
         option_language_menu.addAction("&English", self.set_language_en)
         option_language_menu.addAction("&Chinese", self.set_language_cn)
 
         # help menu
-        help_menu = menu.addMenu("&Help")
-        help_menu.addAction("&Website", self.open_website)
-        help_menu.addAction("Show Help (&Markdown)", self.open_help_markdown)
-        help_menu.addAction("Show Help (HTML)", self.open_help_html)
+        help_menu = menu.addMenu(self.tr("&Help"))
+        help_menu.addAction(self.tr("&Website"), self.open_website)
+        help_menu.addAction(self.tr("Show Help (&Markdown)"),
+                            self.open_help_markdown)
+        help_menu.addAction(self.tr("Show Help (HTML)"), self.open_help_html)
         help_menu.addSeparator()
-        help_menu.addAction("About", self.about)
+        help_menu.addAction(self.tr("About"), self.about)
 
         # status bar
         self.setStatusBar(QStatusBar(self))
@@ -302,7 +303,7 @@ class MainWindow(QMainWindow):
     def set_language_cn(self):
         print("Set language to Chinese")
         self.append_log("Set language to Chinese")
-        Config.global_language = 'cn'
+        Config.global_language = 'zh'
 
     def open_help_markdown(self):
         print("Opening help markdown")
@@ -349,7 +350,13 @@ if __name__ == '__main__':
 
     app = QApplication(sys.argv)
 
-    app.setStyle("windowsvista")
+    # set up translation
+    t = QTranslator()
+    if Config.global_language == 'zh':
+        t.load("translations/zh.qm")
+        app.installTranslator(t)
+
+    # app.setStyle("windowsvista")
 
     # load style sheet from file
     qss_file = open('style.qss').read()

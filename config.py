@@ -30,4 +30,4 @@ global_help_markdown_path = "./Resources/help.md"
 global_help_html_path = "./Resources/help.html"
 
 # 默认语言
-global_language = "en"
+global_language = "zh"

@@ -213,6 +213,14 @@ class MainWindow(QMainWindow):
         file_menu.addSeparator()
         file_menu.addAction("E&xit", self.close)
 
+        option_menu = menu.addMenu("&Options")
+        option_menu.addAction("&Preferences", self.preferences)
+        option_menu.addSeparator()
+
+        option_language_menu = option_menu.addMenu("&Language")
+        option_language_menu.addAction("&English", self.set_language_en)
+        option_language_menu.addAction("&Chinese", self.set_language_cn)
+
         # help menu
         help_menu = menu.addMenu("&Help")
         help_menu.addAction("&Website", self.open_website)
@@ -282,6 +290,19 @@ class MainWindow(QMainWindow):
                   Config.global_resource_directory)
             self.append_log("Current image directory is: " +
                             Config.global_resource_directory)
+
+    def preferences(self):
+        pass
+
+    def set_language_en(self):
+        print("Set language to English")
+        self.append_log("Set language to English")
+        Config.global_language = 'en'
+
+    def set_language_cn(self):
+        print("Set language to Chinese")
+        self.append_log("Set language to Chinese")
+        Config.global_language = 'cn'
 
     def open_help_markdown(self):
         print("Opening help markdown")

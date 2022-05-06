@@ -28,3 +28,6 @@ global_progress_bar_step = 2
 global_help_markdown_path = "./Resources/help.md"
 
 global_help_html_path = "./Resources/help.html"
+
+# 默认语言
+global_language = "en"

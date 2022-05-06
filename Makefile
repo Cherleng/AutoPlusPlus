@@ -8,8 +8,9 @@ pyinstaller:
 test:
 	pyinstaller --onedir  main.py ${RESFLAG} ${HELPDATAFLAG}
 
-gents:
+updts:
 	pylupdate5.exe main.py -ts Resources\\translations\\zh.ts
+	pylupdate5.exe main.py -ts Resources\\translations\\en.ts
 
 clean:
 	rm -rf build dist *.spec

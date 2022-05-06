@@ -18,7 +18,7 @@ import sys
 import time
 import logging
 import Qlogging
-from PyQt5.QtGui import QIcon
+from PyQt5.QtGui import QIcon, QPalette
 from PyQt5.QtWidgets import (QApplication,
                              QWidget,
                              QPushButton,
@@ -37,7 +37,7 @@ from PyQt5.QtWidgets import (QApplication,
                              QMessageBox
                              )
 
-from PyQt5.QtCore import Qt, QTimer, QSize
+from PyQt5.QtCore import Qt, QTimer, QSize, QTranslator
 
 
 class SplashScreen(QWidget):
@@ -294,6 +294,7 @@ class MainWindow(QMainWindow):
         Utils.openfile_sys(Config.global_help_html_path)
 
     def about(self):
+        self.setAutoFillBackground(True)
         text = "Car++ is a car plate recognition software."
         text = "<center>" \
             "<h1>Car++</h1>" \

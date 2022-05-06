@@ -130,9 +130,11 @@ dmypy.json
 
 # misc 
 key.py
-Resources/
+Resources/Detection/*
+!Resources/Detection/car20.jpg
 
 
-#excepetions
-!Resources/translations/*
+# excepetions
 !Resources/help.md
+!Resources/help.html
+!Resources/translations/*

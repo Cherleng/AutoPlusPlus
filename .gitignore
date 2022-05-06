@@ -131,3 +131,7 @@ dmypy.json
 # misc 
 key.py
 /Resources/
+
+
+#excepetions
+!/Resources/Translations/

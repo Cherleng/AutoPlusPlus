@@ -112,7 +112,7 @@ class SplashScreen(QWidget):
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle('Car ++')
+        self.setWindowTitle(self.tr("Car ++"))
 
         self.window_width, self.window_height = 16*64, 9*64
         self.setMinimumSize(self.window_width, self.window_height)
@@ -130,9 +130,9 @@ class MainWindow(QMainWindow):
         self.img_tab.setAutoFillBackground(True)
         self.log_tab.setAutoFillBackground(True)
 
-        self.tabs.addTab(self.cam_tab, "Camera tab")
-        self.tabs.addTab(self.img_tab, "Image tab")
-        self.tabs.addTab(self.log_tab, "Log tab")
+        self.tabs.addTab(self.cam_tab, self.tr("Camera tab"))
+        self.tabs.addTab(self.img_tab, self.tr("Image tab"))
+        self.tabs.addTab(self.log_tab, self.tr("Log tab"))
 
         # add widgets to cam_tab
         self.labelCamTabTitle = QLabel(self.cam_tab)
@@ -141,9 +141,9 @@ class MainWindow(QMainWindow):
         self.labelCamTabTitle.setMinimumSize(QSize(16*10, 9*10))
         self.labelCamTabTitle.setAlignment(Qt.AlignCenter)
 
-        self.btnOpenCamera = QPushButton("Open Camera")
+        self.btnOpenCamera = QPushButton(self.tr("Open Camera"))
         self.btnOpenCamera.setObjectName("BtnOpenCamera")
-        self.btnOpenCamera.setToolTip("Open camera")
+        self.btnOpenCamera.setToolTip(self.tr("Open camera"))
         self.btnOpenCamera.setMinimumSize(QSize(16*5, 9*5))
         self.btnOpenCamera.clicked.connect(self.open_camera)
 
@@ -156,9 +156,9 @@ class MainWindow(QMainWindow):
 
         # add widgets to img_tab
 
-        self.btnDetectImg = QPushButton("Detect Image")
+        self.btnDetectImg = QPushButton(self.tr("Detect Image"))
         self.btnDetectImg.setObjectName("BtnDetectImg")
-        self.btnDetectImg.setToolTip("Detect image")
+        self.btnDetectImg.setToolTip(self.tr("Detect image"))
         self.btnDetectImg.setMinimumSize(QSize(16*5, 9*5))
         self.btnDetectImg.clicked.connect(self.detect_img)
 
@@ -197,8 +197,8 @@ class MainWindow(QMainWindow):
         open_img_icon = self.style().standardIcon(QStyle.SP_FileIcon)
         btn_open_img = QAction(open_img_icon, 'Open &Image', self)
 
-        btn_open_dir.setStatusTip("Open a folder to images")
-        btn_open_img.setStatusTip("Open an image")
+        btn_open_dir.setStatusTip(self.tr("Open a folder to images"))
+        btn_open_img.setStatusTip(self.tr("Open an image"))
 
         btn_open_dir.triggered.connect(self.open_dir)
         btn_open_img.triggered.connect(self.open_img)

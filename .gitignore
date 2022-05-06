@@ -130,8 +130,9 @@ dmypy.json
 
 # misc 
 key.py
-/Resources/
+Resources/
 
 
 #excepetions
-!/Resources/Translations/
+!Resources/translations/*
+!Resources/help.md

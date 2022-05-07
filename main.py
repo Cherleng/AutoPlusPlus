@@ -219,34 +219,36 @@ class MainWindow(QMainWindow):
         menu = self.menuBar()
 
         # file menu
-        file_menu = menu.addMenu(QApplication.translate("MainWindow", "&File"))
-        file_menu.addAction(btn_open_dir)
-        file_menu.addAction(btn_open_img)
-        file_menu.addSeparator()
-        file_menu.addAction(QApplication.translate(
+        self.file_menu = menu.addMenu(
+            QApplication.translate("MainWindow", "&File"))
+        self.file_menu.addAction(btn_open_dir)
+        self.file_menu.addAction(btn_open_img)
+        self.file_menu.addSeparator()
+        self.file_menu.addAction(QApplication.translate(
             "MainWindow", "E&xit"), self.close)
 
-        option_menu = menu.addMenu(
+        self.option_menu = menu.addMenu(
             QApplication.translate("MainWindow", "&Options"))
-        option_menu.addAction(QApplication.translate(
+        self.option_menu.addAction(QApplication.translate(
             "MainWindow", "&Preferences"), self.preferences)
-        option_menu.addSeparator()
+        self.option_menu.addSeparator()
 
-        option_language_menu = option_menu.addMenu(
+        option_language_menu = self.option_menu.addMenu(
             QApplication.translate("MainWindow", "&Language"))
         option_language_menu.addAction("&English", self.set_language_en)
         option_language_menu.addAction("&Chinese", self.set_language_cn)
 
         # help menu
-        help_menu = menu.addMenu(QApplication.translate("MainWindow", "&Help"))
-        help_menu.addAction(QApplication.translate(
+        self.help_menu = menu.addMenu(
+            QApplication.translate("MainWindow", "&Help"))
+        self.help_menu.addAction(QApplication.translate(
             "MainWindow", "&Website"), self.open_website)
-        help_menu.addAction(QApplication.translate("MainWindow", "Show Help (&Markdown)"),
-                            self.open_help_markdown)
-        help_menu.addAction(QApplication.translate(
+        self.help_menu.addAction(QApplication.translate("MainWindow", "Show Help (&Markdown)"),
+                                 self.open_help_markdown)
+        self.help_menu.addAction(QApplication.translate(
             "MainWindow", "Show Help (HTML)"), self.open_help_html)
-        help_menu.addSeparator()
-        help_menu.addAction(QApplication.translate(
+        self.help_menu.addSeparator()
+        self.help_menu.addAction(QApplication.translate(
             "MainWindow", "About"), self.about)
 
         # status bar
@@ -321,6 +323,7 @@ class MainWindow(QMainWindow):
         print("Set language to English")
         self.append_log("Set language to English")
         Config.global_language = 'en'
+        self.change_lang("translations/en.qm")
 
     def set_language_cn(self):
         print("Set language to Chinese")
@@ -376,7 +379,26 @@ class MainWindow(QMainWindow):
     def retranslateUi(self):
         self.btnOpenCamera.setText(
             QApplication.translate("MainWindow", "Open Camera"))
-        self.setToolTip(QApplication.translate("MainWindow", "Open Camera"))
+        self.btnOpenCamera.setToolTip(
+            QApplication.translate("MainWindow", "Open Camera"))
+        self.btnDetectImg.setText(
+            QApplication.translate("MainWindow", "Detect Image"))
+        self.btnDetectImg.setToolTip(
+            QApplication.translate("MainWindow", "Detect Image"))
+
+        # menus
+
+        # file menu
+        self.file_menu.setTitle(
+            QApplication.translate("MainWindow", "&File"))
+
+        # option menu
+        self.option_menu.setTitle(
+            QApplication.translate("MainWindow", "&Options"))
+
+        # help menu
+        self.help_menu.setTitle(
+            QApplication.translate("MainWindow", "&Help"))
 
 
 if __name__ == '__main__':

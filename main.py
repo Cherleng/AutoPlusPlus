@@ -340,6 +340,7 @@ class MainWindow(QMainWindow):
         filename = trans_dir.entryList(['*.qm'], QDir.Files, QDir.Name)
         return [trans_dir.filePath(fn) for fn in filename]
 
+    def retranslateUi(self):
 
 if __name__ == '__main__':
     # don't auto scale when drag app to a different monitor.

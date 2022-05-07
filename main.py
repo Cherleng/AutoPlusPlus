@@ -111,13 +111,11 @@ class SplashScreen(QWidget):
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Car++")
 
+        # set window specific properties
+        self.setWindowTitle("Car++")
         self.window_width, self.window_height = 16*64, 9*64
         self.setMinimumSize(self.window_width, self.window_height)
-
-        qmFiles = self.findQmFiles()
-        self.append_log("qmFiles found: " + str(qmFiles))
 
         self.tabs = QTabWidget()
         self.tabs.setTabPosition(QTabWidget.West)
@@ -188,6 +186,10 @@ class MainWindow(QMainWindow):
         self.append_log("Default image directory is: " +
                         Config.global_resource_directory)
         self.append_log("Default image path is " + Config.global_image_path)
+
+        # find out all the available translations
+        qmFiles = self.findQmFiles()
+        self.append_log("qmFiles found: " + str(qmFiles))
 
         # log tab layout
         self.tab_log_layout = QVBoxLayout()

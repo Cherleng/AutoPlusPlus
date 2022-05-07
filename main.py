@@ -112,7 +112,7 @@ class SplashScreen(QWidget):
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle(self.tr("Car ++"))
+        self.setWindowTitle("Car++")
 
         self.window_width, self.window_height = 16*64, 9*64
         self.setMinimumSize(self.window_width, self.window_height)

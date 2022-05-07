@@ -37,7 +37,7 @@ from PyQt5.QtWidgets import (QApplication,
                              QMessageBox
                              )
 
-from PyQt5.QtCore import Qt, QTimer, QSize, QTranslator
+from PyQt5.QtCore import Qt, QTimer, QSize, QTranslator, QDir
 
 
 class SplashScreen(QWidget):
@@ -331,6 +331,11 @@ class MainWindow(QMainWindow):
     def open_website(self):
         import webbrowser
         webbrowser.open("https://github.com/josedelinux/AutoPlusPlus")
+
+    def findQmFiles(self):
+        trans_dir = QDir('translations')
+        filename = trans_dir.entryList(['*.qm'], QDir.Files, QDir.Name)
+        return [trans_dir.filePath(fn) for fn in filename]
 
 
 if __name__ == '__main__':

@@ -141,9 +141,11 @@ class MainWindow(QMainWindow):
         self.labelCamTabTitle.setMinimumSize(QSize(16*10, 9*10))
         self.labelCamTabTitle.setAlignment(Qt.AlignCenter)
 
-        self.btnOpenCamera = QPushButton(self.tr("Open Camera"))
+        self.btnOpenCamera = QPushButton(
+            QApplication.translate("MainWindow", "Open Camera"))
         self.btnOpenCamera.setObjectName("BtnOpenCamera")
-        self.btnOpenCamera.setToolTip(self.tr("Open camera"))
+        self.btnOpenCamera.setToolTip(
+            QApplication.translate("MainWindow", "Open Camera"))
         self.btnOpenCamera.setMinimumSize(QSize(16*5, 9*5))
         self.btnOpenCamera.clicked.connect(self.open_camera)
 
@@ -156,9 +158,11 @@ class MainWindow(QMainWindow):
 
         # add widgets to img_tab
 
-        self.btnDetectImg = QPushButton(self.tr("Detect Image"))
+        self.btnDetectImg = QPushButton(
+            QApplication.translate("MainWindow", "Detect Image"))
         self.btnDetectImg.setObjectName("BtnDetectImg")
-        self.btnDetectImg.setToolTip(self.tr("Detect image"))
+        self.btnDetectImg.setToolTip(
+            QApplication.translate("MainWindow", "Detect Image"))
         self.btnDetectImg.setMinimumSize(QSize(16*5, 9*5))
         self.btnDetectImg.clicked.connect(self.detect_img)
 
@@ -192,13 +196,17 @@ class MainWindow(QMainWindow):
         # actions
         # ampersand is shortcut
         open_dir_icon = self.style().standardIcon(QStyle.SP_DirOpenIcon)
-        btn_open_dir = QAction(open_dir_icon, self.tr("Open &Folder"), self)
+        btn_open_dir = QAction(open_dir_icon, QApplication.translate(
+            "MainWindow", "Open &Folder"), self)
 
         open_img_icon = self.style().standardIcon(QStyle.SP_FileIcon)
-        btn_open_img = QAction(open_img_icon, self.tr("Open &Image"), self)
+        btn_open_img = QAction(
+            open_img_icon, QApplication.translate("MainWindow", "Open &Image"), self)
 
-        btn_open_dir.setStatusTip(self.tr("Open a folder to images"))
-        btn_open_img.setStatusTip(self.tr("Open an image"))
+        btn_open_dir.setStatusTip(QApplication.translate(
+            "MainWindow", "Open a folder to images"))
+        btn_open_img.setStatusTip(
+            QApplication.translate("MainWindow", "Open an image"))
 
         btn_open_dir.triggered.connect(self.open_dir)
         btn_open_img.triggered.connect(self.open_img)
@@ -207,28 +215,35 @@ class MainWindow(QMainWindow):
         menu = self.menuBar()
 
         # file menu
-        file_menu = menu.addMenu(self.tr("&File"))
+        file_menu = menu.addMenu(QApplication.translate("MainWindow", "&File"))
         file_menu.addAction(btn_open_dir)
         file_menu.addAction(btn_open_img)
         file_menu.addSeparator()
-        file_menu.addAction(self.tr("E&xit"), self.close)
+        file_menu.addAction(QApplication.translate(
+            "MainWindow", "E&xit"), self.close)
 
-        option_menu = menu.addMenu(self.tr("&Options"))
-        option_menu.addAction(self.tr("&Preferences"), self.preferences)
+        option_menu = menu.addMenu(
+            QApplication.translate("MainWindow", "&Options"))
+        option_menu.addAction(QApplication.translate(
+            "MainWindow", "&Preferences"), self.preferences)
         option_menu.addSeparator()
 
-        option_language_menu = option_menu.addMenu(self.tr("&Language"))
+        option_language_menu = option_menu.addMenu(
+            QApplication.translate("MainWindow", "&Language"))
         option_language_menu.addAction("&English", self.set_language_en)
         option_language_menu.addAction("&Chinese", self.set_language_cn)
 
         # help menu
-        help_menu = menu.addMenu(self.tr("&Help"))
-        help_menu.addAction(self.tr("&Website"), self.open_website)
-        help_menu.addAction(self.tr("Show Help (&Markdown)"),
+        help_menu = menu.addMenu(QApplication.translate("MainWindow", "&Help"))
+        help_menu.addAction(QApplication.translate(
+            "MainWindow", "&Website"), self.open_website)
+        help_menu.addAction(QApplication.translate("MainWindow", "Show Help (&Markdown)"),
                             self.open_help_markdown)
-        help_menu.addAction(self.tr("Show Help (HTML)"), self.open_help_html)
+        help_menu.addAction(QApplication.translate(
+            "MainWindow", "Show Help (HTML)"), self.open_help_html)
         help_menu.addSeparator()
-        help_menu.addAction(self.tr("About"), self.about)
+        help_menu.addAction(QApplication.translate(
+            "MainWindow", "About"), self.about)
 
         # status bar
         self.setStatusBar(QStatusBar(self))
@@ -341,6 +356,8 @@ class MainWindow(QMainWindow):
         return [trans_dir.filePath(fn) for fn in filename]
 
     def retranslateUi(self):
+        pass
+
 
 if __name__ == '__main__':
     # don't auto scale when drag app to a different monitor.

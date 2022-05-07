@@ -200,20 +200,19 @@ class MainWindow(QMainWindow):
         # actions
         # ampersand is shortcut
         open_dir_icon = self.style().standardIcon(QStyle.SP_DirOpenIcon)
-        btn_open_dir = QAction(open_dir_icon, QApplication.translate(
+        self.acc_open_dir = QAction(open_dir_icon, QApplication.translate(
             "MainWindow", "Open &Folder"), self)
+        self.acc_open_dir.setStatusTip(QApplication.translate(
+            "MainWindow", "Open a folder to images"))
 
         open_img_icon = self.style().standardIcon(QStyle.SP_FileIcon)
-        btn_open_img = QAction(
+        self.acc_open_img = QAction(
             open_img_icon, QApplication.translate("MainWindow", "Open &Image"), self)
-
-        btn_open_dir.setStatusTip(QApplication.translate(
-            "MainWindow", "Open a folder to images"))
-        btn_open_img.setStatusTip(
+        self.acc_open_img.setStatusTip(
             QApplication.translate("MainWindow", "Open an image"))
 
-        btn_open_dir.triggered.connect(self.open_dir)
-        btn_open_img.triggered.connect(self.open_img)
+        self.acc_open_dir.triggered.connect(self.open_dir)
+        self.acc_open_img.triggered.connect(self.open_img)
 
         # menu
         menu = self.menuBar()
@@ -221,12 +220,13 @@ class MainWindow(QMainWindow):
         # file menu
         self.file_menu = menu.addMenu(
             QApplication.translate("MainWindow", "&File"))
-        self.file_menu.addAction(btn_open_dir)
-        self.file_menu.addAction(btn_open_img)
+        self.file_menu.addAction(self.acc_open_dir)
+        self.file_menu.addAction(self.acc_open_img)
         self.file_menu.addSeparator()
         self.file_menu.addAction(QApplication.translate(
             "MainWindow", "E&xit"), self.close)
 
+        # option menu
         self.option_menu = menu.addMenu(
             QApplication.translate("MainWindow", "&Options"))
         self.option_menu.addAction(QApplication.translate(
@@ -391,6 +391,14 @@ class MainWindow(QMainWindow):
         # file menu
         self.file_menu.setTitle(
             QApplication.translate("MainWindow", "&File"))
+
+        # works, deprecated
+        # self.file_menu.actions()[0].setText(QApplication.translate("MainWindow", "Open &Folder"))
+
+        self.acc_open_dir.setText(
+            QApplication.translate("MainWindow", "Open &Folder"))
+        self.acc_open_img.setText(
+            QApplication.translate("MainWindow", "Open &Image"))
 
         # option menu
         self.option_menu.setTitle(

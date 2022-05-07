@@ -197,25 +197,23 @@ class MainWindow(QMainWindow):
 
         self.log_tab.setLayout(self.tab_log_layout)
 
-        # actions
-        # ampersand is shortcut
+        # menu
+        menu = self.menuBar()
+
+        # file menu acciones n.b. ampersand is shortcut
         open_dir_icon = self.style().standardIcon(QStyle.SP_DirOpenIcon)
         self.acc_open_dir = QAction(open_dir_icon, QApplication.translate(
             "MainWindow", "Open &Folder"), self)
         self.acc_open_dir.setStatusTip(QApplication.translate(
             "MainWindow", "Open a folder to images"))
+        self.acc_open_dir.triggered.connect(self.open_dir)
 
         open_img_icon = self.style().standardIcon(QStyle.SP_FileIcon)
         self.acc_open_img = QAction(
             open_img_icon, QApplication.translate("MainWindow", "Open &Image"), self)
         self.acc_open_img.setStatusTip(
             QApplication.translate("MainWindow", "Open an image"))
-
-        self.acc_open_dir.triggered.connect(self.open_dir)
         self.acc_open_img.triggered.connect(self.open_img)
-
-        # menu
-        menu = self.menuBar()
 
         # file menu
         self.file_menu = menu.addMenu(
@@ -226,13 +224,18 @@ class MainWindow(QMainWindow):
         self.file_menu.addAction(QApplication.translate(
             "MainWindow", "E&xit"), self.close)
 
+        # option menu acciones
+        self.acc_set_preference = QAction(
+            QApplication.translate("MainWindow", "&Preferences"), self)
+        self.acc_set_preference.triggered.connect(self.set_preference)
+
         # option menu
         self.option_menu = menu.addMenu(
             QApplication.translate("MainWindow", "&Options"))
-        self.option_menu.addAction(QApplication.translate(
-            "MainWindow", "&Preferences"), self.preferences)
+        self.option_menu.addAction(self.acc_set_preference)
         self.option_menu.addSeparator()
 
+        # language submenu
         option_language_menu = self.option_menu.addMenu(
             QApplication.translate("MainWindow", "&Language"))
         option_language_menu.addAction("&English", self.set_language_en)
@@ -316,7 +319,9 @@ class MainWindow(QMainWindow):
             self.append_log("Current image directory is: " +
                             Config.global_resource_directory)
 
-    def preferences(self):
+    def set_preference(self):
+        print("set_preference")
+        self.append_log("set_preference")
         pass
 
     def set_language_en(self):
@@ -403,6 +408,9 @@ class MainWindow(QMainWindow):
         # option menu
         self.option_menu.setTitle(
             QApplication.translate("MainWindow", "&Options"))
+
+        self.acc_set_preference.setText(
+            QApplication.translate("MainWindow", "&Preferences"))
 
         # help menu
         self.help_menu.setTitle(

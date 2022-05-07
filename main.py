@@ -234,6 +234,9 @@ class MainWindow(QMainWindow):
         self.setStatusBar(QStatusBar(self))
         self.statusBar().showMessage("Ready")
 
+        # update translation
+        self.retranslateUi()
+
         # set up main window
         # You can't set a QLayout directly on the QMainWindow
         main_wid = QWidget()

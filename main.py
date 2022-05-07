@@ -26,7 +26,6 @@ from PyQt5.QtWidgets import (QApplication,
                              QLabel,
                              QFrame,
                              QHBoxLayout,
-                             QPlainTextEdit,
                              QVBoxLayout,
                              QTabWidget,
                              QMainWindow,
@@ -37,7 +36,7 @@ from PyQt5.QtWidgets import (QApplication,
                              QMessageBox
                              )
 
-from PyQt5.QtCore import Qt, QTimer, QSize, QTranslator, QDir
+from PyQt5.QtCore import Qt, QTimer, QSize, QTranslator, QDir, QEvent
 
 
 class SplashScreen(QWidget):
@@ -116,6 +115,9 @@ class MainWindow(QMainWindow):
 
         self.window_width, self.window_height = 16*64, 9*64
         self.setMinimumSize(self.window_width, self.window_height)
+
+        qmFiles = self.findQmFiles()
+        self.append_log("qmFiles found: " + str(qmFiles))
 
         self.tabs = QTabWidget()
         self.tabs.setTabPosition(QTabWidget.West)
@@ -322,6 +324,7 @@ class MainWindow(QMainWindow):
         print("Set language to Chinese")
         self.append_log("Set language to Chinese")
         Config.global_language = 'zh'
+        self.change_lang("translations/zh.qm")
 
     def open_help_markdown(self):
         print("Opening help markdown")
@@ -355,8 +358,23 @@ class MainWindow(QMainWindow):
         filename = trans_dir.entryList(['*.qm'], QDir.Files, QDir.Name)
         return [trans_dir.filePath(fn) for fn in filename]
 
+    def change_lang(self, data):
+        if Utils.exists(data):
+            g_translator.load(data)
+            QApplication.instance().installTranslator(g_translator)
+        else:
+            print("No such file: " + data)
+            self.append_log("No such file: " + data)
+
+    def changeEvent(self, event):
+        if event.type() == QEvent.LanguageChange:
+            self.retranslateUi()
+        super(MainWindow, self).changeEvent(event)
+
     def retranslateUi(self):
-        pass
+        self.btnOpenCamera.setText(
+            QApplication.translate("MainWindow", "Open Camera"))
+        self.setToolTip(QApplication.translate("MainWindow", "Open Camera"))
 
 
 if __name__ == '__main__':
@@ -377,10 +395,11 @@ if __name__ == '__main__':
     app = QApplication(sys.argv)
 
     # set up translation
-    t = QTranslator()
-    if Config.global_language == 'zh':
-        t.load("translations/zh.qm")
-        app.installTranslator(t)
+    global g_translator
+    g_translator = QTranslator()
+    if Config.global_language == 'en':
+        g_translator.load("translations/zh.qm")
+        app.installTranslator(g_translator)
 
     # app.setStyle("windowsvista")
 

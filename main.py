@@ -127,9 +127,9 @@ class MainWindow(QMainWindow):
         self.log_tab = QWidget()
 
         # tab name
-        self.cam_tab_name = QApplication.translate("Mainwindow", "Camera tab")
-        self.img_tab_name = QApplication.translate("Mainwindow", "Image tab")
-        self.log_tab_name = QApplication.translate("Mainwindos", "Log tab")
+        self.cam_tab_name = QApplication.translate("MainWindow", "Camera tab")
+        self.img_tab_name = QApplication.translate("MainWindow", "Image tab")
+        self.log_tab_name = QApplication.translate("MainWindow", "Log tab")
 
         self.cam_tab.setAutoFillBackground(True)
         self.img_tab.setAutoFillBackground(True)
@@ -404,13 +404,12 @@ class MainWindow(QMainWindow):
 
     def retranslateUi(self):
         # tabs
-
-        self.tabs.setTabText(0, QApplication.translate(
-            "Mainwindow", "Camera tab"))
+        self.tabs.setTabText(self.tabs.indexOf(self.cam_tab), QApplication.translate(
+            "MainWindow", "Camera tab"))
         self.tabs.setTabText(
-            1, QApplication.translate("Mainwindow", "Image tab"))
-        self.tabs.setTabText(
-            2, QApplication.translate("Mainwindos", "Log tab"))
+            self.tabs.indexOf(self.img_tab), QApplication.translate("MainWindow", "Image tab"))
+        self.tabs.setTabText(self.tabs.indexOf(
+            self.log_tab), QApplication.translate("MainWindow", "Log tab"))
 
         # widgets
         self.btnOpenCamera.setText(

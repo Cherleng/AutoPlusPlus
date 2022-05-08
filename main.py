@@ -236,10 +236,10 @@ class MainWindow(QMainWindow):
         self.option_menu.addSeparator()
 
         # language submenu
-        option_language_menu = self.option_menu.addMenu(
+        self.option_language_menu = self.option_menu.addMenu(
             QApplication.translate("MainWindow", "&Language"))
-        option_language_menu.addAction("&English", self.set_language_en)
-        option_language_menu.addAction("&Chinese", self.set_language_cn)
+        self.option_language_menu.addAction("&English", self.set_language_en)
+        self.option_language_menu.addAction("&Chinese", self.set_language_cn)
 
         # help menu
         self.help_menu = menu.addMenu(
@@ -411,6 +411,9 @@ class MainWindow(QMainWindow):
 
         self.acc_set_preference.setText(
             QApplication.translate("MainWindow", "&Preferences"))
+
+        self.option_language_menu.setTitle(
+            QApplication.translate("MainWindow", "&Language"))
 
         # help menu
         self.help_menu.setTitle(

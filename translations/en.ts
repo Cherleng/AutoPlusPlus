@@ -99,14 +99,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.py" line="130"/>
-        <source>Camera tab</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>Mainwindow</name>
-    <message>
         <location filename="../main.py" line="407"/>
         <source>Camera tab</source>
         <translation type="unfinished"></translation>

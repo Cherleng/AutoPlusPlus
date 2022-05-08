@@ -91,25 +91,17 @@
     <message>
         <location filename="../main.py" line="411"/>
         <source>Log tab</source>
-        <translation type="unfinished">日志页</translation>
+        <translation>日志页</translation>
     </message>
     <message>
         <location filename="../main.py" line="409"/>
         <source>Image tab</source>
-        <translation type="unfinished">相片页</translation>
+        <translation>相片页</translation>
     </message>
-    <message>
-        <location filename="../main.py" line="130"/>
-        <source>Camera tab</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>Mainwindow</name>
     <message>
         <location filename="../main.py" line="407"/>
         <source>Camera tab</source>
-        <translation type="unfinished">相机页</translation>
+        <translation>相机页</translation>
     </message>
 </context>
 </TS>

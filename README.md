@@ -35,8 +35,8 @@ make
 
 ## Features
 
-* internationalization
-* Cross-platform
+* Internationalization
+* Cross-Platform
 
 ## Todo
 

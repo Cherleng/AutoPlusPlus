@@ -6,9 +6,26 @@ Intelligent Car plate detection System based on OpenCV
 
 ## Compile
 
+<details>
+<summary><strong>Build</strong></summary>
+<br />
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/josedelinux/AutoPlusPlus.git
+cd AutoPlusPlus
 ```
+
+2. `make`
+
+```bash
 make
 ```
+
+3. start the program
+
+</details>
 
 ---
 

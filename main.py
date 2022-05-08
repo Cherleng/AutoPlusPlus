@@ -126,13 +126,18 @@ class MainWindow(QMainWindow):
         self.img_tab = QWidget()
         self.log_tab = QWidget()
 
+        # tab name
+        self.cam_tab_name = QApplication.translate("Mainwindow", "Camera tab")
+        self.img_tab_name = QApplication.translate("Mainwindow", "Image tab")
+        self.log_tab_name = QApplication.translate("Mainwindos", "Log tab")
+
         self.cam_tab.setAutoFillBackground(True)
         self.img_tab.setAutoFillBackground(True)
         self.log_tab.setAutoFillBackground(True)
 
-        self.tabs.addTab(self.cam_tab, self.tr("Camera tab"))
-        self.tabs.addTab(self.img_tab, self.tr("Image tab"))
-        self.tabs.addTab(self.log_tab, self.tr("Log tab"))
+        self.tabs.addTab(self.cam_tab, self.cam_tab_name)
+        self.tabs.addTab(self.img_tab, self.img_tab_name)
+        self.tabs.addTab(self.log_tab, self.log_tab_name)
 
         # add widgets to cam_tab
         self.labelCamTabTitle = QLabel(self.cam_tab)
@@ -215,14 +220,17 @@ class MainWindow(QMainWindow):
             QApplication.translate("MainWindow", "Open an image"))
         self.acc_open_img.triggered.connect(self.open_img)
 
+        self.acc_exit = QAction(QApplication.translate(
+            "MainWindow", "E&xit"), self)
+        self.acc_exit.triggered.connect(self.close)
+
         # file menu
         self.file_menu = menu.addMenu(
             QApplication.translate("MainWindow", "&File"))
         self.file_menu.addAction(self.acc_open_dir)
         self.file_menu.addAction(self.acc_open_img)
         self.file_menu.addSeparator()
-        self.file_menu.addAction(QApplication.translate(
-            "MainWindow", "E&xit"), self.close)
+        self.file_menu.addAction(self.acc_exit)
 
         # option menu acciones
         self.acc_set_preference = QAction(
@@ -241,22 +249,35 @@ class MainWindow(QMainWindow):
         self.option_language_menu.addAction("&English", self.set_language_en)
         self.option_language_menu.addAction("&Chinese", self.set_language_cn)
 
+        # help menu acciones
+        self.acc_website = QAction(QApplication.translate(
+            "MainWindow", "&Website"), self)
+        self.acc_website.triggered.connect(self.open_website)
+
+        self.acc_help_md = QAction(
+            QApplication.translate("MainWindow", "Show Help (&Markdown)"), self)
+        self.acc_help_md.triggered.connect(self.open_help_markdown)
+
+        self.acc_help_html = QAction(QApplication.translate(
+            "MainWindow", "Show Help (&HTML)"), self)
+        self.acc_help_html.triggered.connect(self.open_help_html)
+
+        self.acc_about = QAction(QApplication.translate(
+            "MainWindow", "&About"), self)
+        self.acc_about.triggered.connect(self.about)
+
         # help menu
         self.help_menu = menu.addMenu(
             QApplication.translate("MainWindow", "&Help"))
-        self.help_menu.addAction(QApplication.translate(
-            "MainWindow", "&Website"), self.open_website)
-        self.help_menu.addAction(QApplication.translate("MainWindow", "Show Help (&Markdown)"),
-                                 self.open_help_markdown)
-        self.help_menu.addAction(QApplication.translate(
-            "MainWindow", "Show Help (HTML)"), self.open_help_html)
+        self.help_menu.addAction(self.acc_website)
+        self.help_menu.addAction(self.acc_help_md)
+        self.help_menu.addAction(self.acc_help_html)
         self.help_menu.addSeparator()
-        self.help_menu.addAction(QApplication.translate(
-            "MainWindow", "About"), self.about)
+        self.help_menu.addAction(self.acc_about)
 
         # status bar
         self.setStatusBar(QStatusBar(self))
-        self.statusBar().showMessage("Ready")
+        self.statusBar().showMessage(QApplication.translate("MainWindow", "Ready"))
 
         # update translation
         self.retranslateUi()
@@ -382,6 +403,16 @@ class MainWindow(QMainWindow):
         super(MainWindow, self).changeEvent(event)
 
     def retranslateUi(self):
+        # tabs
+
+        self.tabs.setTabText(0, QApplication.translate(
+            "Mainwindow", "Camera tab"))
+        self.tabs.setTabText(
+            1, QApplication.translate("Mainwindow", "Image tab"))
+        self.tabs.setTabText(
+            2, QApplication.translate("Mainwindos", "Log tab"))
+
+        # widgets
         self.btnOpenCamera.setText(
             QApplication.translate("MainWindow", "Open Camera"))
         self.btnOpenCamera.setToolTip(
@@ -405,6 +436,9 @@ class MainWindow(QMainWindow):
         self.acc_open_img.setText(
             QApplication.translate("MainWindow", "Open &Image"))
 
+        self.acc_exit.setText(QApplication.translate(
+            "MainWindow", "E&xit"))
+
         # option menu
         self.option_menu.setTitle(
             QApplication.translate("MainWindow", "&Options"))
@@ -418,6 +452,19 @@ class MainWindow(QMainWindow):
         # help menu
         self.help_menu.setTitle(
             QApplication.translate("MainWindow", "&Help"))
+
+        self.acc_website.setText(QApplication.translate(
+            "MainWindow", "&Website"))
+        self.acc_help_md.setText(QApplication.translate(
+            "MainWindow", "Show Help (&Markdown)"))
+        self.acc_help_html.setText(QApplication.translate(
+            "MainWindow", "Show Help (&HTML)"))
+
+        self.acc_about.setText(QApplication.translate(
+            "MainWindow", "&About"))
+
+        # status bar
+        self.statusBar().showMessage(QApplication.translate("MainWindow", "Ready"))
 
 
 if __name__ == '__main__':

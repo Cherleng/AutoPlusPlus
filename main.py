@@ -243,7 +243,8 @@ class MainWindow(QMainWindow):
         self.option_language_menu = self.option_menu.addMenu(
             QApplication.translate("MainWindow", "&Language"))
         self.option_language_menu.addAction("&English", self.set_language_en)
-        self.option_language_menu.addAction("&Chinese", self.set_language_cn)
+        self.option_language_menu.addAction("简体中文[&c]", self.set_language_cn)
+        self.option_language_menu.addAction("E&spañol", self.set_language_es)
 
         # help menu acciones
         self.acc_website = QAction(QApplication.translate(
@@ -352,6 +353,12 @@ class MainWindow(QMainWindow):
         self.append_log("Set language to Chinese")
         Config.global_language = 'zh'
         self.change_lang("translations/zh.qm")
+
+    def set_language_es(self):
+        print("Set language to Spanish")
+        self.append_log("Set language to Spanish")
+        Config.global_language = 'es'
+        self.change_lang("translations/es.qm")
 
     def open_help_markdown(self):
         print("Opening help markdown")

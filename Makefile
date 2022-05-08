@@ -19,6 +19,7 @@ test:
 updts:
 	pylupdate5.exe main.py  -noobsolete -ts translations\\zh.ts
 	pylupdate5.exe main.py  -noobsolete -ts translations\\en.ts
+	pylupdate5.exe main.py  -noobsolete -ts translations\\es.ts
 
 clean:
 	rm -rf build dist *.spec

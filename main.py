@@ -5,7 +5,7 @@ __author__ = "Jiehuang Liu, Guixin Chen <Valentinofreeman@163.com>"
 __credits__ = ["Jiehuang Liu", "Guixin Chen", "Mingkang Chen",
                "Shuailei Zhao", "HanZhen Fu"]
 __license__ = "MIT"
-__version__ = "0.0.7"
+__version__ = "0.0.8"
 __maintainer__ = "Jiehuang Liu, Guixin Chen"
 __email__ = "Valentinofreeman@163.com"
 __status__ = "Prototype"
@@ -82,18 +82,11 @@ class SplashScreen(QWidget):
         self.progressBar.setRange(0, self.n)
         self.progressBar.setValue(20)
 
-        # self.labelLoading = QLabel(self.frame)
-        # self.labelLoading.resize(self.width() - 10, 50)
-        # self.labelLoading.move(0, self.progressBar.y() + 70)
-        # self.labelLoading.setObjectName('LabelLoading')
-        # self.labelLoading.setAlignment(Qt.AlignCenter)
-        # self.labelLoading.setText('Loading...')
-
     def loading(self):
         self.progressBar.setValue(self.counter)
 
         if self.counter == int(self.n * 0.3):
-            self.labelDescription.setText('<strong>加载中</strong>')
+            self.labelDescription.setText('<strong>Loading</strong>')
 
         # when progressbar ends
         elif self.counter >= self.n:
@@ -111,6 +104,8 @@ class SplashScreen(QWidget):
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
+        # icon
+        self.setWindowIcon(QIcon('Resources\\favicon.ico'))
 
         # set window specific properties
         self.setWindowTitle("Car++")
@@ -213,7 +208,8 @@ class MainWindow(QMainWindow):
             "MainWindow", "Open a folder to images"))
         self.acc_open_dir.triggered.connect(self.open_dir)
 
-        open_img_icon = self.style().standardIcon(QStyle.SP_FileIcon)
+        #open_img_icon = self.style().standardIcon(QStyle.SP_FileIcon)
+        open_img_icon = QIcon('Resources\\open_img.png')
         self.acc_open_img = QAction(
             open_img_icon, QApplication.translate("MainWindow", "Open &Image"), self)
         self.acc_open_img.setStatusTip(
@@ -373,9 +369,9 @@ class MainWindow(QMainWindow):
         text = "<center>" \
             "<h1>Car++</h1>" \
             "&#8291;" \
-            "<img src=icon.svg>" \
+            "<img src=Resources\\about.jpg>" \
             "</center>" \
-            "<p>Version 0.0.7<br/>" \
+            "<p>Version 0.0.8<br/>" \
             "Copyleft &copy; Jxau Univ.</p>"
         QMessageBox.about(self, "About Car++",
                           text)
@@ -486,7 +482,7 @@ if __name__ == '__main__':
     # set up translation
     global g_translator
     g_translator = QTranslator()
-    if Config.global_language == 'en':
+    if Config.global_language == 'zh':
         g_translator.load("translations/zh.qm")
         app.installTranslator(g_translator)
 

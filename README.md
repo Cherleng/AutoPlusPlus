@@ -24,6 +24,7 @@ make
 ```
 
 3. start the program
+
 ```
 ./dist/main/main
 ```
@@ -40,7 +41,6 @@ make
 ## Todo
 
 * [ ] qss improvement,better UI
-* [ ] add icon
 * [ ] add setup.py
 * [ ] complete readme
 * [ ] Splash Screen improvement

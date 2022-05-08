@@ -12,7 +12,7 @@ make
 
 ---
 
-# Features
+## Features
 
 * internationalization
 

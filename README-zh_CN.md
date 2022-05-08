@@ -2,9 +2,9 @@
 
 [English](./README.md) | 简体中文
 
-Intelligent Car plate detection System based on OpenCV
+基于OpenCV的智能车牌识别系统
 
-## Compile
+## 编译
 
 ```
 make
@@ -12,9 +12,9 @@ make
 
 ---
 
-# Features
+## 功能
 
-* internationalization
+* 国际化
 
 *
 
@@ -26,6 +26,6 @@ make
 * [ ] complete readme
 * [ ] Splash Screen improvement
 
-## Contributors
+## 贡献者
 
-[Jiehuang Liu](https://github.com/Cherleng/), [Guixin Chen](https://github.com/josedelinux) ,  [Mingkang  Chen](https://github.com/jarvis618) , Shuailei Zhao ,  HanZhen Fu
+[刘杰煌](https://github.com/Cherleng/), [Guixin Chen](https://github.com/josedelinux) ,  [陈明康](https://github.com/jarvis618) , 赵帅磊 ,  付翰臻

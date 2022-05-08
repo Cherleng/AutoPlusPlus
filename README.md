@@ -24,6 +24,9 @@ make
 ```
 
 3. start the program
+```
+./dist/main/main
+```
 
 </details>
 
@@ -32,8 +35,7 @@ make
 ## Features
 
 * internationalization
-
-*
+* Cross-platform
 
 ## Todo
 

@@ -49,7 +49,7 @@ def ReadPlate(plate_path):
 
     kernel_Y = cv2.getStructuringElement(cv2.MORPH_RECT, (1, 2))  # 定义矩形卷积核
     mark = cv2.dilate(mark, kernel_Y, (-1, -1), iterations=1)  # 膨胀操作
-    cv2.imshow('palat2', mark)  # 打印出被抠出来的车牌
+    cv2.imshow('Plate', mark)  # 打印出被抠出来的车牌
 
     # 阴影法分割每个字符，首先统计x轴上的投影
     pix_list = []

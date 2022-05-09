@@ -135,7 +135,7 @@ def carplate(img_path):
         count = 1
         cv2.imwrite("Resources/Scan/NoPlate_" +
                     str(count)+'.jpg', imgRoi)  # 将图片写入文件
-        cv2.imshow("lpr", img)
+        cv2.imshow("rectangle selected", img)
 
         ReadPlate("Resources/Scan/NoPlate_"+str(count)+'.jpg')  # 将图片进行分割
         translate_plate()  # 将图片进行转译

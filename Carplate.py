@@ -7,7 +7,7 @@ from hyperlpr import *
 from aip import AipOcr
 from cut_plate import *
 from translate import *
-def carplate():
+def carplate(img_path):
 
 
     #车牌识别系统主函
@@ -133,7 +133,7 @@ def carplate():
     #     with open(filePath,'rb') as fp:
     #         return fp.read()
     # 主程
-    lpr('Resources/car20.jpg')
+    lpr(img_path)
 
 if __name__ == '__main__':
     carplate()

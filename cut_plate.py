@@ -36,7 +36,7 @@ def ReadPlate(plate_path):
     plate_img = cv2.cvtColor(plate_after_del, cv2.COLOR_BGR2GRAY)  # 转化为灰度图
     _, plate_img = cv2.threshold(plate_img, 180, 255, cv2.THRESH_BINARY)  # 二值化
     # _, plate_img = cv2.threshold(plate_img, 180, 255, cv2.THRESH_BINARY)  # 二值化
-    # cv2.imshow('palat1', plate_img)  # 打印出被抠出来的车牌
+    # cv2.imshow('plate1', plate_img)  # 打印出被抠出来的车牌
 
     # # 腐蚀和膨胀
     # kernel_X = cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3))  # 定义矩形卷积核
@@ -49,7 +49,8 @@ def ReadPlate(plate_path):
 
     kernel_Y = cv2.getStructuringElement(cv2.MORPH_RECT, (1, 2))  # 定义矩形卷积核
     mark = cv2.dilate(mark, kernel_Y, (-1, -1), iterations=1)  # 膨胀操作
-    cv2.imshow('Plate', mark)  # 打印出被抠出来的车牌
+    # cv2.imshow('Plate2', mark)  # 打印出被抠出来的车牌
+    mark_to_return = mark
 
     # 阴影法分割每个字符，首先统计x轴上的投影
     pix_list = []
@@ -148,8 +149,11 @@ def ReadPlate(plate_path):
     # cv2.imshow('charpic7', char_7_img)  # 打印出被抠出来的车牌单个字符
     cv2.imwrite('Split_Img\\7.jpg', char_7_img)
 
-    cv2.waitKey(0)
+    # cv2.waitKey(0)
+    return mark_to_return
 
 
 if __name__ == '__main__':
-    ReadPlate()
+    img = ReadPlate("Resources/Scan/NoPlate_1.jpg")
+    cv2.imshow('img', img)
+    cv2.waitKey(0)

@@ -18,7 +18,7 @@ import sys
 import time
 import logging
 import Qlogging
-from PyQt5.QtGui import QIcon, QPalette
+from PyQt5.QtGui import QIcon, QPalette, QImage
 from PyQt5.QtWidgets import (QApplication,
                              QWidget,
                              QPushButton,
@@ -37,6 +37,16 @@ from PyQt5.QtWidgets import (QApplication,
                              )
 
 from PyQt5.QtCore import Qt, QTimer, QSize, QTranslator, QDir, QEvent
+
+
+def img_cv_to_QImage(img):
+    """
+    convert cv2 image to QImage
+    """
+    height, width, channel = img.shape
+    qImg = QImage(img.data, width, height,
+                  3 * width, QImage.Format_RGB888).rgbSwapped()
+    return qImg
 
 
 class SplashScreen(QWidget):

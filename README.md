@@ -45,6 +45,7 @@ make
 * [ ] complete readme
 * [ ] Splash Screen improvement
 
+
 ## Contributors
 
 [Jiehuang Liu](https://github.com/Cherleng/), [Guixin Chen](https://github.com/josedelinux) ,  [Mingkang  Chen](https://github.com/jarvis618) , Shuailei Zhao ,  HanZhen Fu

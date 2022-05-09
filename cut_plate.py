@@ -8,7 +8,6 @@ import numpy as np
 from PIL import Image
 
 
-
 def ReadPlate(plate_path):
     img = cv2.imread(plate_path)
 
@@ -31,7 +30,8 @@ def ReadPlate(plate_path):
     print('after_del_width = ', after_del_width)
     print('after_del_height = ', after_del_height)
 
-    plate_after_del = img[after_del_y:after_del_y+after_del_height, after_del_x:after_del_x+after_del_width]
+    plate_after_del = img[after_del_y:after_del_y +
+                          after_del_height, after_del_x:after_del_x+after_del_width]
 
     plate_img = cv2.cvtColor(plate_after_del, cv2.COLOR_BGR2GRAY)  # 转化为灰度图
     _, plate_img = cv2.threshold(plate_img, 180, 255, cv2.THRESH_BINARY)  # 二值化
@@ -77,9 +77,9 @@ def ReadPlate(plate_path):
     print('end_char_index:', end_char_index)
 
     all_char_lenth = end_char_index - start_char_index + 1
-    top2width = (end_char_index-start_char_index+1)*102/409 # 前2个字符宽度
-    end5width = (end_char_index-start_char_index+1)*273/409 # 后5个字符宽度
-    top2width = int(top2width+0.5)  #四舍五入
+    top2width = (end_char_index-start_char_index+1)*102/409  # 前2个字符宽度
+    end5width = (end_char_index-start_char_index+1)*273/409  # 后5个字符宽度
+    top2width = int(top2width+0.5)  # 四舍五入
     end5width = int(end5width+0.5)
     # top2width = int(top2width)
     # end5width = int(end5width)
@@ -92,52 +92,64 @@ def ReadPlate(plate_path):
     char_2_start_index = start_char_index + int(all_char_lenth*(45+12)/409+0.5)
 
     # 后五个字符
-    char_7_start_index = end_char_index - int(all_char_lenth * (45 ) / 409 + 0.5) + 1
+    char_7_start_index = end_char_index - \
+        int(all_char_lenth * (45) / 409 + 0.5) + 1
     print('char_7_start_index = ', char_7_start_index)
-    char_6_start_index = end_char_index - int(all_char_lenth * (45 + 12 + 45) / 409 + 0.5) + 1
+    char_6_start_index = end_char_index - \
+        int(all_char_lenth * (45 + 12 + 45) / 409 + 0.5) + 1
     print('char_6_start_index = ', char_6_start_index)
-    char_5_start_index = end_char_index - int(all_char_lenth * (45 + 12 + 45 + 12 + 45) / 409 + 0.5) + 1
+    char_5_start_index = end_char_index - \
+        int(all_char_lenth * (45 + 12 + 45 + 12 + 45) / 409 + 0.5) + 1
     print('char_5_start_index = ', char_5_start_index)
-    char_4_start_index = end_char_index - int(all_char_lenth * (45 + 12 + 45 + 12 + 45 + 12 + 45) / 409 + 0.5) + 1
+    char_4_start_index = end_char_index - \
+        int(all_char_lenth * (45 + 12 + 45 + 12 + 45 + 12 + 45) / 409 + 0.5) + 1
     print('char_4_start_index = ', char_4_start_index)
-    char_3_start_index = end_char_index - int(all_char_lenth * (45 + 12 + 45 + 12 + 45 + 12 + 45 + 12 + 45) / 409 + 0.5) + 1
+    char_3_start_index = end_char_index - \
+        int(all_char_lenth * (45 + 12 + 45 + 12 +
+            45 + 12 + 45 + 12 + 45) / 409 + 0.5) + 1
     print('char_3_start_index = ', char_3_start_index)
 
     single_char_width = int(all_char_lenth * 45 / 409 + 0.5)
     print('single_char_width = ', single_char_width)
 
-
     # 开始分割字符
-    char_1_img = mark[:, char_1_start_index:char_1_start_index + single_char_width + 2]
-    #cv2.imshow('charpic1', char_1_img)  # 打印出被抠出来的车牌单个字符
-    cv2.imwrite('Resources2\\1.jpg',char_1_img)
+    char_1_img = mark[:, char_1_start_index:char_1_start_index +
+                      single_char_width + 2]
+    # cv2.imshow('charpic1', char_1_img)  # 打印出被抠出来的车牌单个字符
+    cv2.imwrite('Split_Img\\1.jpg', char_1_img)
 
-    char_2_img = mark[:, char_2_start_index - 2:char_2_start_index + single_char_width + 2]
-    #cv2.imshow('charpic2', char_2_img)  # 打印出被抠出来的车牌单个字符
-    cv2.imwrite('Resources2\\2.jpg', char_2_img)
+    char_2_img = mark[:, char_2_start_index -
+                      2:char_2_start_index + single_char_width + 2]
+    # cv2.imshow('charpic2', char_2_img)  # 打印出被抠出来的车牌单个字符
+    cv2.imwrite('Split_Img\\2.jpg', char_2_img)
 
-    char_3_img = mark[:, char_3_start_index - 2:char_3_start_index + single_char_width + 2]
-    #cv2.imshow('charpic3', char_3_img)  # 打印出被抠出来的车牌单个字符
-    cv2.imwrite('Resources2\\3.jpg', char_3_img)
+    char_3_img = mark[:, char_3_start_index -
+                      2:char_3_start_index + single_char_width + 2]
+    # cv2.imshow('charpic3', char_3_img)  # 打印出被抠出来的车牌单个字符
+    cv2.imwrite('Split_Img\\3.jpg', char_3_img)
 
-    char_4_img = mark[:, char_4_start_index - 2:char_4_start_index + single_char_width + 2]
-    #cv2.imshow('charpic4', char_4_img)  # 打印出被抠出来的车牌单个字符
-    cv2.imwrite('Resources2\\4.jpg', char_4_img)
+    char_4_img = mark[:, char_4_start_index -
+                      2:char_4_start_index + single_char_width + 2]
+    # cv2.imshow('charpic4', char_4_img)  # 打印出被抠出来的车牌单个字符
+    cv2.imwrite('Split_Img\\4.jpg', char_4_img)
 
-    char_5_img = mark[:, char_5_start_index - 2:char_5_start_index + single_char_width + 2]
-    #cv2.imshow('charpic5', char_5_img)  # 打印出被抠出来的车牌单个字符
-    cv2.imwrite('Resources2\\5.jpg', char_5_img)
+    char_5_img = mark[:, char_5_start_index -
+                      2:char_5_start_index + single_char_width + 2]
+    # cv2.imshow('charpic5', char_5_img)  # 打印出被抠出来的车牌单个字符
+    cv2.imwrite('Split_Img\\5.jpg', char_5_img)
 
-    char_6_img = mark[:, char_6_start_index - 2:char_6_start_index + single_char_width + 2]
-    #cv2.imshow('charpic6', char_6_img)  # 打印出被抠出来的车牌单个字符
-    cv2.imwrite('Resources2\\6.jpg', char_6_img)
+    char_6_img = mark[:, char_6_start_index -
+                      2:char_6_start_index + single_char_width + 2]
+    # cv2.imshow('charpic6', char_6_img)  # 打印出被抠出来的车牌单个字符
+    cv2.imwrite('Split_Img\\6.jpg', char_6_img)
 
-    char_7_img = mark[:, char_7_start_index - 2:char_7_start_index + single_char_width]
-    #cv2.imshow('charpic7', char_7_img)  # 打印出被抠出来的车牌单个字符
-    cv2.imwrite('Resources2\\7.jpg', char_7_img)
-
+    char_7_img = mark[:, char_7_start_index -
+                      2:char_7_start_index + single_char_width]
+    # cv2.imshow('charpic7', char_7_img)  # 打印出被抠出来的车牌单个字符
+    cv2.imwrite('Split_Img\\7.jpg', char_7_img)
 
     cv2.waitKey(0)
+
 
 if __name__ == '__main__':
     ReadPlate()

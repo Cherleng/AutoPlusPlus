@@ -10,6 +10,9 @@ from translate import *
 
 
 def carplate(img_path):
+    # 用于分裂车牌的目录
+    if not os.path.isdir("Split_Img/"):
+        os.mkdir("Split_Img/")
 
     # 车牌识别系统主函
     def gray_guss(image):
@@ -53,8 +56,8 @@ def carplate(img_path):
         open_img = cv2.morphologyEx(close_img, cv2.MORPH_OPEN, kernel)
         kernel2 = np.ones((10, 10), np.uint8)
         open_img2 = cv2.morphologyEx(open_img, cv2.MORPH_OPEN, kernel2)
-        #cv2.imshow('close', close_img)
-        #cv2.imshow('open', open_img2)
+        # cv2.imshow('close', close_img)
+        # cv2.imshow('open', open_img2)
     #     # 由于部分图像得到的轮廓边缘不整齐，因此再进行一次膨胀操作
         element = cv2.getStructuringElement(cv2.MORPH_RECT, (5, 5))
         dilation_img = cv2.dilate(open_img, element, iterations=3)  # 膨胀操作
@@ -72,7 +75,7 @@ def carplate(img_path):
         rectangles = []
         mask = np.zeros(shape=img.shape, dtype=np.uint8)
         for c in contours:
-            ## print (c)
+            # print (c)
             x = []
             y = []
             for point in c:
@@ -83,8 +86,8 @@ def carplate(img_path):
             # print(rectangles)
             # cv2.rectangle(mask,pt1=(min(y),min(x)),pt2=(max(y),max(x)),color = (0,0,255),thickness=3)
             # cv2.rectangle(img, pt1=(min(y), min(x)), pt2=(max(y), max(x)), color=(0, 0, 255), thickness=3)
-        #cv2.imshow('Mask', mask)
-        #cv2.imshow('img', img)
+        # cv2.imshow('Mask', mask)
+        # cv2.imshow('img', img)
     #
     #
         # 进一步细分筛选，排除干扰

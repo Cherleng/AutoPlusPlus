@@ -5,7 +5,11 @@ __author__ = "Jiehuang Liu, Guixin Chen <Valentinofreeman@163.com>"
 __credits__ = ["Jiehuang Liu", "Guixin Chen", "Mingkang Chen",
                "Shuailei Zhao", "HanZhen Fu"]
 __license__ = "MIT"
+<<<<<<< HEAD
 __version__ = "0.0.8"
+=======
+__version__ = "0.0.7"
+>>>>>>> parent of 52a8754 (All update)
 __maintainer__ = "Jiehuang Liu, Guixin Chen"
 __email__ = "Valentinofreeman@163.com"
 __status__ = "Prototype"
@@ -82,6 +86,16 @@ class SplashScreen(QWidget):
         self.progressBar.setRange(0, self.n)
         self.progressBar.setValue(20)
 
+<<<<<<< HEAD
+=======
+        # self.labelLoading = QLabel(self.frame)
+        # self.labelLoading.resize(self.width() - 10, 50)
+        # self.labelLoading.move(0, self.progressBar.y() + 70)
+        # self.labelLoading.setObjectName('LabelLoading')
+        # self.labelLoading.setAlignment(Qt.AlignCenter)
+        # self.labelLoading.setText('Loading...')
+
+>>>>>>> parent of 52a8754 (All update)
     def loading(self):
         self.progressBar.setValue(self.counter)
 
@@ -121,18 +135,27 @@ class MainWindow(QMainWindow):
         self.img_tab = QWidget()
         self.log_tab = QWidget()
 
+<<<<<<< HEAD
         # tab name
         self.cam_tab_name = QApplication.translate("MainWindow", "Camera tab")
         self.img_tab_name = QApplication.translate("MainWindow", "Image tab")
         self.log_tab_name = QApplication.translate("MainWindow", "Log tab")
 
+=======
+>>>>>>> parent of 52a8754 (All update)
         self.cam_tab.setAutoFillBackground(True)
         self.img_tab.setAutoFillBackground(True)
         self.log_tab.setAutoFillBackground(True)
 
+<<<<<<< HEAD
         self.tabs.addTab(self.img_tab, self.img_tab_name)
         self.tabs.addTab(self.cam_tab, self.cam_tab_name)
         self.tabs.addTab(self.log_tab, self.log_tab_name)
+=======
+        self.tabs.addTab(self.cam_tab, "Camera tab")
+        self.tabs.addTab(self.img_tab, "Image tab")
+        self.tabs.addTab(self.log_tab, "Log tab")
+>>>>>>> parent of 52a8754 (All update)
 
         # add widgets to cam_tab
         self.labelCamTabTitle = QLabel(self.cam_tab)
@@ -157,6 +180,7 @@ class MainWindow(QMainWindow):
         self.cam_tab.setLayout(self.tab_cam_layout)
 
         # add widgets to img_tab
+<<<<<<< HEAD
         self.btnDetectImg = QPushButton(
             QApplication.translate("MainWindow", "Detect Image"))
         self.btnDetectImg.setObjectName("BtnDetectImg")
@@ -173,11 +197,22 @@ class MainWindow(QMainWindow):
         self.btn_get_result.setMinimumSize(QSize(16*5, 9*5))
         self.btn_get_result.clicked.connect(self.get_result)
         self.btn_get_result.setEnabled(False)
+=======
+
+        self.btnDetectImg = QPushButton("Detect Image")
+        self.btnDetectImg.setObjectName("BtnDetectImg")
+        self.btnDetectImg.setToolTip("Detect image")
+        self.btnDetectImg.setMinimumSize(QSize(16*5, 9*5))
+        self.btnDetectImg.clicked.connect(self.detect_img)
+>>>>>>> parent of 52a8754 (All update)
 
         # img tab layout
         self.tab_img_layout = QVBoxLayout()
         self.tab_img_layout.addWidget(self.btnDetectImg)
+<<<<<<< HEAD
         self.tab_img_layout.addWidget(self.btn_get_result)
+=======
+>>>>>>> parent of 52a8754 (All update)
 
         self.img_tab.setLayout(self.tab_img_layout)
 
@@ -195,10 +230,13 @@ class MainWindow(QMainWindow):
         self.append_log("Default image directory is: " +
                         Config.global_resource_directory)
         self.append_log("Default image path is " + Config.global_image_path)
+<<<<<<< HEAD
 
         # find out all the available translations
         qmFiles = self.findQmFiles()
         self.append_log("qmFiles found: " + str(qmFiles))
+=======
+>>>>>>> parent of 52a8754 (All update)
 
         # log tab layout
         self.tab_log_layout = QVBoxLayout()
@@ -206,6 +244,23 @@ class MainWindow(QMainWindow):
 
         self.log_tab.setLayout(self.tab_log_layout)
 
+<<<<<<< HEAD
+=======
+        # actions
+        # ampersand is shortcut
+        open_dir_icon = self.style().standardIcon(QStyle.SP_DirOpenIcon)
+        btn_open_dir = QAction(open_dir_icon, 'Open &Folder', self)
+
+        open_img_icon = self.style().standardIcon(QStyle.SP_FileIcon)
+        btn_open_img = QAction(open_img_icon, 'Open &Image', self)
+
+        btn_open_dir.setStatusTip("Open a folder to images")
+        btn_open_img.setStatusTip("Open an image")
+
+        btn_open_dir.triggered.connect(self.open_dir)
+        btn_open_img.triggered.connect(self.open_img)
+
+>>>>>>> parent of 52a8754 (All update)
         # menu
         menu = self.menuBar()
 
@@ -230,6 +285,7 @@ class MainWindow(QMainWindow):
         self.acc_exit.triggered.connect(self.close)
 
         # file menu
+<<<<<<< HEAD
         self.file_menu = menu.addMenu(
             QApplication.translate("MainWindow", "&File"))
         self.file_menu.addAction(self.acc_open_dir)
@@ -280,6 +336,21 @@ class MainWindow(QMainWindow):
         self.help_menu.addAction(self.acc_help_html)
         self.help_menu.addSeparator()
         self.help_menu.addAction(self.acc_about)
+=======
+        file_menu = menu.addMenu("&File")
+        file_menu.addAction(btn_open_dir)
+        file_menu.addAction(btn_open_img)
+        file_menu.addSeparator()
+        file_menu.addAction("E&xit", self.close)
+
+        # help menu
+        help_menu = menu.addMenu("&Help")
+        help_menu.addAction("&Website", self.open_website)
+        help_menu.addAction("Show Help (&Markdown)", self.open_help_markdown)
+        help_menu.addAction("Show Help (HTML)", self.open_help_html)
+        help_menu.addSeparator()
+        help_menu.addAction("About", self.about)
+>>>>>>> parent of 52a8754 (All update)
 
         # status bar
         self.setStatusBar(QStatusBar(self))
@@ -304,12 +375,15 @@ class MainWindow(QMainWindow):
                         Config.global_image_path)
         print("detect_img: current image path: " + Config.global_image_path)
         carplate(Config.global_image_path)
+<<<<<<< HEAD
         self.btn_get_result.setEnabled(True)
 
     def get_result(self):
         self.append_log("call get_result")
         print("call get_result")
         pass
+=======
+>>>>>>> parent of 52a8754 (All update)
 
     def open_camera(self):
         self.append_log("Opening camera ...")
@@ -352,6 +426,7 @@ class MainWindow(QMainWindow):
             self.append_log("Current image directory is: " +
                             Config.global_resource_directory)
 
+<<<<<<< HEAD
     def set_preference(self):
         print("set_preference")
         self.append_log("set_preference")
@@ -375,6 +450,8 @@ class MainWindow(QMainWindow):
         Config.global_language = 'es'
         self.change_lang("translations/es.qm")
 
+=======
+>>>>>>> parent of 52a8754 (All update)
     def open_help_markdown(self):
         print("Opening help markdown")
         self.append_log("Opening help markdown")
@@ -386,14 +463,23 @@ class MainWindow(QMainWindow):
         Utils.openfile_sys(Config.global_help_html_path)
 
     def about(self):
+<<<<<<< HEAD
         self.setAutoFillBackground(True)
+=======
+>>>>>>> parent of 52a8754 (All update)
         text = "Car++ is a car plate recognition software."
         text = "<center>" \
             "<h1>Car++</h1>" \
             "&#8291;" \
+<<<<<<< HEAD
             "<img src=Resources\\about.jpg>" \
             "</center>" \
             "<p>Version 0.0.8<br/>" \
+=======
+            "<img src=icon.svg>" \
+            "</center>" \
+            "<p>Version 0.0.7<br/>" \
+>>>>>>> parent of 52a8754 (All update)
             "Copyleft &copy; Jxau Univ.</p>"
         QMessageBox.about(self, "About Car++",
                           text)
@@ -401,6 +487,7 @@ class MainWindow(QMainWindow):
     def open_website(self):
         import webbrowser
         webbrowser.open("https://github.com/josedelinux/AutoPlusPlus")
+<<<<<<< HEAD
 
     def findQmFiles(self):
         trans_dir = QDir('translations')
@@ -482,6 +569,8 @@ class MainWindow(QMainWindow):
 
         # status bar
         self.statusBar().showMessage(QApplication.translate("MainWindow", "Ready"))
+=======
+>>>>>>> parent of 52a8754 (All update)
 
 
 if __name__ == '__main__':
@@ -501,6 +590,7 @@ if __name__ == '__main__':
 
     app = QApplication(sys.argv)
 
+<<<<<<< HEAD
     # set up translation
     global g_translator
     g_translator = QTranslator()
@@ -509,6 +599,9 @@ if __name__ == '__main__':
         app.installTranslator(g_translator)
 
     # app.setStyle("windowsvista")
+=======
+    app.setStyle("windowsvista")
+>>>>>>> parent of 52a8754 (All update)
 
     # load style sheet from file
     qss_file = open('style.qss').read()

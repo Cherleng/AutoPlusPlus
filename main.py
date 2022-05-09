@@ -10,15 +10,15 @@ __maintainer__ = "Jiehuang Liu, Guixin Chen"
 __email__ = "Valentinofreeman@163.com"
 __status__ = "Prototype"
 
-
 from Carplate import *
+from cut_plate import ReadPlate
 import Config
 import Utils
 import sys
 import time
 import logging
 import Qlogging
-from PyQt5.QtGui import QIcon, QPalette, QImage
+from PyQt5.QtGui import QIcon, QPalette, QImage, QPixmap
 from PyQt5.QtWidgets import (QApplication,
                              QWidget,
                              QPushButton,
@@ -33,7 +33,8 @@ from PyQt5.QtWidgets import (QApplication,
                              QStyle,
                              QFileDialog,
                              QStatusBar,
-                             QMessageBox
+                             QMessageBox,
+                             QTextEdit
                              )
 
 from PyQt5.QtCore import Qt, QTimer, QSize, QTranslator, QDir, QEvent
@@ -43,10 +44,48 @@ def img_cv_to_QImage(img):
     """
     convert cv2 image to QImage
     """
-    height, width, channel = img.shape
+    height, width = img.shape[0], img.shape[1]
     qImg = QImage(img.data, width, height,
                   3 * width, QImage.Format_RGB888).rgbSwapped()
-    return qImg
+    return QPixmap(qImg)
+
+
+class result_windows(QMainWindow):
+    """
+    展示最终的图片和文本的窗口
+    参数： cv2图片,字符串
+    """
+
+    def __init__(self, img, plate_text):
+        super().__init__()
+        main_wid = QWidget()
+
+        self.resultTextEdit = QTextEdit()
+        self.resultTextEdit.setText(plate_text)
+
+        self.label = QLabel("最终结果")
+        self.label.setScaledContents(True)
+        self.label.setMinimumSize(QSize(40, 30))
+        self.label.setMaximumSize(QSize(800, 600))
+        converted = img_cv_to_QImage(img)
+        self.label.setPixmap(converted)
+
+        btn_copy = QPushButton("copy")
+        btn_copy.clicked.connect(self.copy_text)
+
+        layout = QVBoxLayout()
+        layout.addWidget(self.label)
+        layout.addWidget(self.resultTextEdit)
+        layout.addWidget(btn_copy)
+        main_wid.setLayout(layout)
+        self.setCentralWidget(main_wid)
+
+    def copy_text(self):
+        text = self.resultTextEdit.toPlainText()
+        # self.label.setText(text)
+        cb = QApplication.clipboard()
+        cb.clear(mode=cb.Clipboard)
+        cb.setText(text, mode=cb.Clipboard)
 
 
 class SplashScreen(QWidget):
@@ -313,13 +352,21 @@ class MainWindow(QMainWindow):
         self.append_log("detect_img: current image path: " +
                         Config.global_image_path)
         print("detect_img: current image path: " + Config.global_image_path)
-        carplate(Config.global_image_path)
         self.btn_get_result.setEnabled(True)
+        selected = carplate(Config.global_image_path)
+        #cv2.imshow("selected Rectangle", selected)
+        self.result = result_windows(selected, "已选中区域")
+        self.result.show()
 
     def get_result(self):
         self.append_log("call get_result")
         print("call get_result")
-        pass
+        ReadPlate("Resources/Scan/NoPlate_1.jpg")
+        text = translate_plate()
+        # since ReadPlate return Broken image, we load image directly
+        img_plate = cv2.imread("Resources/Scan/NoPlate_1.jpg")
+        self.result = result_windows(img_plate, text)
+        self.result.show()
 
     def open_camera(self):
         self.append_log("Opening camera ...")

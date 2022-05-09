@@ -124,7 +124,9 @@ def translate_plate():
     # "".join(result)函数将列表转换为拼接好的字符串，方便结果显示
     print("车牌号码是：")
     print("".join(result))
+    return "".join(result)
 
 
 if __name__ == '__main__':
-    translate_plate()
+    text = translate_plate()
+    print(text)

@@ -9,6 +9,10 @@ from PIL import Image
 
 
 def ReadPlate(plate_path):
+    """
+    裁剪broken图片
+    返回np.Mat
+    """
     img = cv2.imread(plate_path)
 
     # 稍微裁剪车牌图片

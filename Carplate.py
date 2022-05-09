@@ -9,7 +9,11 @@ from cut_plate import *
 from translate import *
 
 
-def carplate(img_path):
+def carplate(img_path) -> np.ndarray[int, np.dtype[np.generic]]:
+    """
+    返回整张长方型选中的cv2图片
+    """
+
     # 用于分裂车牌的目录
     if not os.path.isdir("Split_Img/"):
         os.mkdir("Split_Img/")
@@ -135,11 +139,13 @@ def carplate(img_path):
         count = 1
         cv2.imwrite("Resources/Scan/NoPlate_" +
                     str(count)+'.jpg', imgRoi)  # 将图片写入文件
-        cv2.imshow("rectangle selected", img)
+        # cv2.imshow("rectangle selected", img)
 
-        ReadPlate("Resources/Scan/NoPlate_"+str(count)+'.jpg')  # 将图片进行分割
-        translate_plate()  # 将图片进行转译
-        cv2.waitKey(0)
+        # ReadPlate("Resources/Scan/NoPlate_"+str(count)+'.jpg')  # 将图片进行分割
+        # translate_plate()  # 将图片进行转译
+
+        # cv2.waitKey(0)
+        return img
     #
     # ##FloodFill算法
     # # def floodfiii():
@@ -147,8 +153,10 @@ def carplate(img_path):
     #     with open(filePath,'rb') as fp:
     #         return fp.read()
     # 主程
-    lpr(img_path)
+    return lpr(img_path)
 
 
 if __name__ == '__main__':
-    carplate()
+    img = carplate("Resources/Detection/car20.jpg")
+    cv2.imshow("rectangle selected", img)
+    cv2.waitKey(0)

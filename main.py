@@ -400,7 +400,7 @@ class MainWindow(QMainWindow):
 
     def open_website(self):
         import webbrowser
-        webbrowser.open("https://github.com/josedelinux/AutoPlusPlus")
+        webbrowser.open("https://github.com/Cherleng/AutoPlusPlus")
 
     def findQmFiles(self):
         trans_dir = QDir('translations')

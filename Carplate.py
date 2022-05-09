@@ -3,7 +3,7 @@ import cv2
 from matplotlib import pyplot as plt
 import os
 import numpy as np
-#from hyperlpr import *
+from hyperlpr import *
 from aip import AipOcr
 from cut_plate import *
 from translate import *

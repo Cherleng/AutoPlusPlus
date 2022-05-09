@@ -96,7 +96,7 @@
     <message>
         <location filename="../main.py" line="405"/>
         <source>Image tab</source>
-        <translation>相片页</translation>
+        <translation>图像页</translation>
     </message>
     <message>
         <location filename="../main.py" line="403"/>

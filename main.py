@@ -130,8 +130,8 @@ class MainWindow(QMainWindow):
         self.img_tab.setAutoFillBackground(True)
         self.log_tab.setAutoFillBackground(True)
 
-        self.tabs.addTab(self.cam_tab, self.cam_tab_name)
         self.tabs.addTab(self.img_tab, self.img_tab_name)
+        self.tabs.addTab(self.cam_tab, self.cam_tab_name)
         self.tabs.addTab(self.log_tab, self.log_tab_name)
 
         # add widgets to cam_tab
@@ -157,7 +157,6 @@ class MainWindow(QMainWindow):
         self.cam_tab.setLayout(self.tab_cam_layout)
 
         # add widgets to img_tab
-
         self.btnDetectImg = QPushButton(
             QApplication.translate("MainWindow", "Detect Image"))
         self.btnDetectImg.setObjectName("BtnDetectImg")
@@ -166,9 +165,19 @@ class MainWindow(QMainWindow):
         self.btnDetectImg.setMinimumSize(QSize(16*5, 9*5))
         self.btnDetectImg.clicked.connect(self.detect_img)
 
+        self.btn_get_result = QPushButton(
+            QApplication.translate("MainWindow", "Result"))
+        self.btn_get_result.setObjectName("BtnGetResult")
+        self.btn_get_result.setToolTip(
+            QApplication.translate("MainWindow", "You have to detect image first"))
+        self.btn_get_result.setMinimumSize(QSize(16*5, 9*5))
+        self.btn_get_result.clicked.connect(self.get_result)
+        self.btn_get_result.setEnabled(False)
+
         # img tab layout
         self.tab_img_layout = QVBoxLayout()
         self.tab_img_layout.addWidget(self.btnDetectImg)
+        self.tab_img_layout.addWidget(self.btn_get_result)
 
         self.img_tab.setLayout(self.tab_img_layout)
 
@@ -295,6 +304,12 @@ class MainWindow(QMainWindow):
                         Config.global_image_path)
         print("detect_img: current image path: " + Config.global_image_path)
         carplate(Config.global_image_path)
+        self.btn_get_result.setEnabled(True)
+
+    def get_result(self):
+        self.append_log("call get_result")
+        print("call get_result")
+        pass
 
     def open_camera(self):
         self.append_log("Opening camera ...")

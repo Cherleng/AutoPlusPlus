@@ -66,7 +66,7 @@ class result_windows(QMainWindow):
         self.resultTextEdit.setText(plate_text)
 
         self.label = QLabel(QApplication.translate(
-            "MainWindow", "Final Result"))
+            "result_windows", "Final Result"))
         self.label.setScaledContents(True)
         self.label.setMinimumSize(QSize(40, 30))
         self.label.setMaximumSize(QSize(800, 600))
@@ -74,7 +74,7 @@ class result_windows(QMainWindow):
         self.label.setPixmap(converted)
 
         btn_copy = QPushButton(QApplication.translate(
-            "MainWindow", "Copy Car Plate"))
+            "result_windows", "Copy Car Plate"))
         btn_copy.clicked.connect(self.copy_text)
 
         layout = QVBoxLayout()

@@ -358,7 +358,7 @@ class MainWindow(QMainWindow):
         selected = carplate(Config.global_image_path)
         #cv2.imshow("selected Rectangle", selected)
         self.result = result_windows(
-            selected, QApplication.translate("MainWindow", "Selected Area demostration"))
+            selected, QApplication.translate("MainWindow", "Selected Area demonstration"))
         self.result.show()
 
     def get_result(self):

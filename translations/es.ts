@@ -4,114 +4,129 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../main.py" line="425"/>
+        <location filename="../main.py" line="489"/>
         <source>Camera tab</source>
         <translation>Pestaña de Cámara</translation>
     </message>
     <message>
-        <location filename="../main.py" line="427"/>
+        <location filename="../main.py" line="491"/>
         <source>Image tab</source>
         <translation>Pestaña de imagen</translation>
     </message>
     <message>
-        <location filename="../main.py" line="429"/>
+        <location filename="../main.py" line="493"/>
         <source>Log tab</source>
         <translation>Pestaña de Logging</translation>
     </message>
     <message>
-        <location filename="../main.py" line="435"/>
+        <location filename="../main.py" line="499"/>
         <source>Open Camera</source>
         <translation>Abrir cámara</translation>
     </message>
     <message>
-        <location filename="../main.py" line="439"/>
+        <location filename="../main.py" line="503"/>
         <source>Detect Image</source>
         <translation>Detectar imagen</translation>
     </message>
     <message>
-        <location filename="../main.py" line="451"/>
+        <location filename="../main.py" line="515"/>
         <source>Open &amp;Folder</source>
         <translation>Abrir &amp;Carpeta</translation>
     </message>
     <message>
-        <location filename="../main.py" line="216"/>
+        <location filename="../main.py" line="269"/>
         <source>Open a folder to images</source>
         <translation>Abrir una carpeta de imágenes</translation>
     </message>
     <message>
-        <location filename="../main.py" line="453"/>
+        <location filename="../main.py" line="517"/>
         <source>Open &amp;Image</source>
         <translation>Abrir &amp;Imagen</translation>
     </message>
     <message>
-        <location filename="../main.py" line="224"/>
+        <location filename="../main.py" line="277"/>
         <source>Open an image</source>
         <translation>Abrir una imagen</translation>
     </message>
     <message>
-        <location filename="../main.py" line="456"/>
+        <location filename="../main.py" line="520"/>
         <source>E&amp;xit</source>
         <translation>&amp;Salir</translation>
     </message>
     <message>
-        <location filename="../main.py" line="445"/>
+        <location filename="../main.py" line="509"/>
         <source>&amp;File</source>
         <translation>&amp;Archivo</translation>
     </message>
     <message>
-        <location filename="../main.py" line="463"/>
+        <location filename="../main.py" line="527"/>
         <source>&amp;Preferences</source>
         <translation>&amp;Preferencia</translation>
     </message>
     <message>
-        <location filename="../main.py" line="460"/>
+        <location filename="../main.py" line="524"/>
         <source>&amp;Options</source>
         <translation>&amp;Opciones</translation>
     </message>
     <message>
-        <location filename="../main.py" line="466"/>
+        <location filename="../main.py" line="530"/>
         <source>&amp;Language</source>
         <translation>&amp;Idiomas</translation>
     </message>
     <message>
-        <location filename="../main.py" line="473"/>
+        <location filename="../main.py" line="537"/>
         <source>&amp;Website</source>
         <translation>Sitio &amp;Web</translation>
     </message>
     <message>
-        <location filename="../main.py" line="475"/>
+        <location filename="../main.py" line="539"/>
         <source>Show Help (&amp;Markdown)</source>
         <translation>Documento de ayuda(&amp;Markdown)</translation>
     </message>
     <message>
-        <location filename="../main.py" line="477"/>
+        <location filename="../main.py" line="541"/>
         <source>Show Help (&amp;HTML)</source>
         <translation>Documento de ayuda(&amp;HTML)</translation>
     </message>
     <message>
-        <location filename="../main.py" line="480"/>
+        <location filename="../main.py" line="544"/>
         <source>&amp;About</source>
         <translation>&amp;Acerca de</translation>
     </message>
     <message>
-        <location filename="../main.py" line="470"/>
+        <location filename="../main.py" line="534"/>
         <source>&amp;Help</source>
         <translation>&amp;Ayuda</translation>
     </message>
     <message>
-        <location filename="../main.py" line="484"/>
+        <location filename="../main.py" line="548"/>
         <source>Ready</source>
         <translation>Listo</translation>
     </message>
     <message>
-        <location filename="../main.py" line="168"/>
+        <location filename="../main.py" line="221"/>
         <source>Result</source>
         <translation>resultado</translation>
     </message>
     <message>
-        <location filename="../main.py" line="171"/>
+        <location filename="../main.py" line="224"/>
         <source>You have to detect image first</source>
         <translation>Tienes que detectar la imagen primero</translation>
+    </message>
+    <message>
+        <location filename="../main.py" line="68"/>
+        <source>Final Result</source>
+        <translation>Resultado final</translation>
+    </message>
+    <message>
+        <location filename="../main.py" line="76"/>
+        <source>Copy Car Plate</source>
+        <translation>Copiar placa de coche</translation>
+    </message>
+    <message>
+        <location filename="../main.py" line="362"/>
+        <source>Selected Area demonstration</source>
+        <translation>Demostración del área seleccionada</translation>
     </message>
 </context>
 </TS>

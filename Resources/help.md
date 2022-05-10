@@ -22,6 +22,6 @@ Thank you for choosing **Car++**. This document will help you to start Car++. Pl
 For more questions or feedbacks, please contact us by:
 
 - Home Page: https://github.com/josedelinux/AutoPlusPlus
-- Email: <josedelinuxi@hotmail.com>
+- Email: <josedelinux@hotmail.com>
 
 We opened a Github issue page in case you want to start a discussion or as an alternative way to report bugs/suggestions: https://github.com/josedelinux/AutoPlusPlus/issues

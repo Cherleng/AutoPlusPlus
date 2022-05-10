@@ -58,6 +58,8 @@ class result_windows(QMainWindow):
 
     def __init__(self, img, plate_text):
         super().__init__()
+        self.setWindowTitle("Result")
+
         main_wid = QWidget()
 
         self.resultTextEdit = QTextEdit()
@@ -195,8 +197,6 @@ class MainWindow(QMainWindow):
         self.btnOpenCamera = QPushButton(
             QApplication.translate("MainWindow", "Open Camera"))
         self.btnOpenCamera.setObjectName("BtnOpenCamera")
-        self.btnOpenCamera.setToolTip(
-            QApplication.translate("MainWindow", "Open Camera"))
         self.btnOpenCamera.setMinimumSize(QSize(16*5, 9*5))
         self.btnOpenCamera.clicked.connect(self.open_camera)
 
@@ -211,16 +211,12 @@ class MainWindow(QMainWindow):
         self.btnDetectImg = QPushButton(
             QApplication.translate("MainWindow", "Detect Image"))
         self.btnDetectImg.setObjectName("BtnDetectImg")
-        self.btnDetectImg.setToolTip(
-            QApplication.translate("MainWindow", "Detect Image"))
         self.btnDetectImg.setMinimumSize(QSize(16*5, 9*5))
         self.btnDetectImg.clicked.connect(self.detect_img)
 
         self.btn_get_result = QPushButton(
             QApplication.translate("MainWindow", "Result"))
         self.btn_get_result.setObjectName("BtnGetResult")
-        self.btn_get_result.setToolTip(
-            QApplication.translate("MainWindow", "You have to detect image first"))
         self.btn_get_result.setMinimumSize(QSize(16*5, 9*5))
         self.btn_get_result.clicked.connect(self.get_result)
         self.btn_get_result.setEnabled(False)
@@ -272,8 +268,6 @@ class MainWindow(QMainWindow):
         open_img_icon = QIcon('Resources\\open_img.png')
         self.acc_open_img = QAction(
             open_img_icon, QApplication.translate("MainWindow", "Open &Image"), self)
-        self.acc_open_img.setStatusTip(
-            QApplication.translate("MainWindow", "Open an image"))
         self.acc_open_img.triggered.connect(self.open_img)
 
         self.acc_exit = QAction(QApplication.translate(
@@ -498,6 +492,8 @@ class MainWindow(QMainWindow):
             QApplication.translate("MainWindow", "Detect Image"))
         self.btnDetectImg.setToolTip(
             QApplication.translate("MainWindow", "Detect Image"))
+        self.btn_get_result.setToolTip(
+            QApplication.translate("MainWindow", "You have to detect image first"))
 
         # menus
 
@@ -510,8 +506,12 @@ class MainWindow(QMainWindow):
 
         self.acc_open_dir.setText(
             QApplication.translate("MainWindow", "Open &Folder"))
+        self.acc_open_dir.setStatusTip(QApplication.translate(
+            "MainWindow", "Open a folder to images"))
         self.acc_open_img.setText(
             QApplication.translate("MainWindow", "Open &Image"))
+        self.acc_open_img.setStatusTip(
+            QApplication.translate("MainWindow", "Open an image"))
 
         self.acc_exit.setText(QApplication.translate(
             "MainWindow", "E&xit"))

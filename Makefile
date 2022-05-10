@@ -1,10 +1,12 @@
 RESFLAG =	\
 --add-data="Resources\\splashscr_864.png;Resources\\"  --add-data="style.qss;."	\
---add-data="Resources\\Detection\\car20.jpg;Resources\\Detection\\" \
+--add-data="Resources\\Detection\\car20.jpg;Resources\\Detection\\"	\
 --add-data="Resources\\open_img.png;Resources\\" \
---add-data="Resources\\about.jpg;Resources\\" 
+--add-data="Resources\\about.jpg;Resources\\" \
+--add-data="refer1\\;refer1\\" \
 
-HELPDATAFLAG = --add-data="Resources\\help.md;Resources\\" --add-data="Resources\\help.html;Resources\\"
+HELPDATAFLAG = --add-data="Resources\\help.md;Resources\\" \
+--add-data="Resources\\help.html;Resources\\" \
 
 TSDATAFLAG = --add-data="translations\\*.qm;translations\\"
 

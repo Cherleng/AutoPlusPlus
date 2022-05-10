@@ -18,7 +18,10 @@ def carplate(img_path) -> np.ndarray[int, np.dtype[np.generic]]:
     if not os.path.isdir("Split_Img/"):
         os.mkdir("Split_Img/")
 
-    # 车牌识别系统主函
+    if not os.path.isdir("Resources/Scan"):
+        os.mkdir("Resources/Scan")
+
+        # 车牌识别系统主函
     def gray_guss(image):
         gray_image = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
         image = cv2.GaussianBlur(gray_image, (5, 5), 0)

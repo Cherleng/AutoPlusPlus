@@ -21,5 +21,9 @@ updts:
 	pylupdate5.exe main.py  -noobsolete -ts translations\\en.ts
 	pylupdate5.exe main.py  -noobsolete -ts translations\\es.ts
 
+
+releasets:updts
+	lrelease translations\\*.ts
+
 clean:
 	rm -rf build dist *.spec

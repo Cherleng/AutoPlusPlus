@@ -63,14 +63,16 @@ class result_windows(QMainWindow):
         self.resultTextEdit = QTextEdit()
         self.resultTextEdit.setText(plate_text)
 
-        self.label = QLabel("最终结果")
+        self.label = QLabel(QApplication.translate(
+            "MainWindow", "Final Result"))
         self.label.setScaledContents(True)
         self.label.setMinimumSize(QSize(40, 30))
         self.label.setMaximumSize(QSize(800, 600))
         converted = img_cv_to_QImage(img)
         self.label.setPixmap(converted)
 
-        btn_copy = QPushButton("copy")
+        btn_copy = QPushButton(QApplication.translate(
+            "MainWindow", "Copy Car Plate"))
         btn_copy.clicked.connect(self.copy_text)
 
         layout = QVBoxLayout()
@@ -355,7 +357,8 @@ class MainWindow(QMainWindow):
         self.btn_get_result.setEnabled(True)
         selected = carplate(Config.global_image_path)
         #cv2.imshow("selected Rectangle", selected)
-        self.result = result_windows(selected, "已选中区域")
+        self.result = result_windows(
+            selected, QApplication.translate("MainWindow", "Selected Area demostration"))
         self.result.show()
 
     def get_result(self):

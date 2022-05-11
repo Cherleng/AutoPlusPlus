@@ -550,6 +550,8 @@ if __name__ == '__main__':
     # don't auto scale when drag app to a different monitor.
     # QApplication.setAttribute(Qt.HighDpiScaleFactorRoundingPolicy.PassThrough)
 
+    Qconfig.__init__()
+
     # update path to absolute path
     Qconfig.global_resource_directory = Utils.update_path(
         Qconfig.global_resource_directory)

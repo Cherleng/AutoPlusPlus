@@ -30,12 +30,14 @@ from PyQt5.QtWidgets import (QApplication,
 
 from PyQt5.QtCore import Qt, QTimer, QSize, QTranslator, QDir, QEvent
 from ui_preferences import Ui_Dialog
+import Qconfig
 
 
 class Preferences_win(QDialog, Ui_Dialog):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        Qconfig.__init__()
         self.setupUi(self)
         self.setWindowTitle('Preferences')
         self.setWindowIcon(QApplication.style().standardIcon(
@@ -52,11 +54,11 @@ class Preferences_win(QDialog, Ui_Dialog):
             return None
         else:
             print("selected: "+selected_dir)
-            Config.global_resource_directory = selected_dir
+            Qconfig.global_resource_directory = selected_dir
             print("Current image directory is: " +
-                  Config.global_resource_directory)
+                  Qconfig.global_resource_directory)
             self.append_log("Current image directory is: " +
-                            Config.global_resource_directory)
+                            Qconfig.global_resource_directory)
 
     def findQmFiles(self):
         trans_dir = QDir('translations')

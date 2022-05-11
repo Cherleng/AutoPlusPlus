@@ -20,6 +20,7 @@ import time
 import logging
 import Qlogging
 import Qpreferences
+import VideoCapture
 from PyQt5.QtGui import QIcon, QPalette, QImage, QPixmap
 from PyQt5.QtWidgets import (QApplication,
                              QWidget,
@@ -375,8 +376,10 @@ class MainWindow(QMainWindow):
     def open_camera(self):
         self.append_log("Opening camera ...")
         print("Opening camera")
+        VideoCapture.capture()
 
     # open image file and update config.global_image_path
+
     def open_img(self):
         print("Open image")
         self.append_log("Open image")

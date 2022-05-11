@@ -5,6 +5,7 @@ RESFLAG =	\
 --add-data="Resources\\open_img.png;Resources\\" \
 --add-data="Resources\\about.jpg;Resources\\" \
 --add-data="refer1\\;refer1\\" \
+--add-data="config.ini;." \
 
 HELPDATAFLAG = --add-data="Resources\\help.md;Resources\\" \
 --add-data="Resources\\help.html;Resources\\" \

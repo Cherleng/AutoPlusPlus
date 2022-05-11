@@ -12,7 +12,7 @@ __status__ = "Prototype"
 
 from Carplate import *
 from cut_plate import ReadPlate
-import QConfig
+import Qconfig
 import Utils
 import sys
 import time
@@ -110,7 +110,7 @@ class SplashScreen(QWidget):
         self.timer = QTimer()
         self.timer.timeout.connect(self.loading)
         # every global_progress_bar_interval ms
-        self.timer.start(QConfig.global_progress_bar_interval)
+        self.timer.start(Qconfig.global_progress_bar_interval)
 
     def initUI(self):
         layout = QVBoxLayout()
@@ -152,7 +152,7 @@ class SplashScreen(QWidget):
             self.myApp = MainWindow()
             self.myApp.show()
 
-        self.counter += QConfig.global_progress_bar_step
+        self.counter += Qconfig.global_progress_bar_step
 
 
 class MainWindow(QMainWindow):
@@ -241,8 +241,8 @@ class MainWindow(QMainWindow):
 
         self.append_log('Logging started')
         self.append_log("Default image directory is: " +
-                        QConfig.global_resource_directory)
-        self.append_log("Default image path is " + QConfig.global_image_path)
+                        Qconfig.global_resource_directory)
+        self.append_log("Default image path is " + Qconfig.global_image_path)
 
         # find out all the available translations
         qmFiles = self.findQmFiles()
@@ -347,10 +347,10 @@ class MainWindow(QMainWindow):
 
     def detect_img(self):
         self.append_log("detect_img: current image path: " +
-                        QConfig.global_image_path)
-        print("detect_img: current image path: " + QConfig.global_image_path)
+                        Qconfig.global_image_path)
+        print("detect_img: current image path: " + Qconfig.global_image_path)
         self.btn_get_result.setEnabled(True)
-        selected = carplate(QConfig.global_image_path)
+        selected = carplate(Qconfig.global_image_path)
         #cv2.imshow("selected Rectangle", selected)
         self.result = result_windows(
             selected, QApplication.translate("MainWindow", "Selected Area demonstration"))
@@ -384,10 +384,10 @@ class MainWindow(QMainWindow):
         else:
             print("selected: "+selected_img_name)
             self.append_log("selected: "+selected_img_name)
-            QConfig.global_image_path = selected_img_name
-            print("Current image path is: " + QConfig.global_image_path)
+            Qconfig.global_image_path = selected_img_name
+            print("Current image path is: " + Qconfig.global_image_path)
             self.append_log("Current image path is: " +
-                            QConfig.global_image_path)
+                            Qconfig.global_image_path)
 
     # open image file directory
     def open_dir(self):
@@ -401,11 +401,11 @@ class MainWindow(QMainWindow):
         else:
             print("selected: "+selected_dir)
             self.append_log("selected: "+selected_dir)
-            QConfig.global_resource_directory = selected_dir
+            Qconfig.global_resource_directory = selected_dir
             print("Current image directory is: " +
-                  QConfig.global_resource_directory)
+                  Qconfig.global_resource_directory)
             self.append_log("Current image directory is: " +
-                            QConfig.global_resource_directory)
+                            Qconfig.global_resource_directory)
 
     def set_preference(self):
         print("set_preference")
@@ -416,30 +416,30 @@ class MainWindow(QMainWindow):
     def set_language_en(self):
         print("Set language to English")
         self.append_log("Set language to English")
-        QConfig.global_language = 'en'
+        Qconfig.global_language = 'en'
         self.change_lang("translations/en.qm")
 
     def set_language_cn(self):
         print("Set language to Chinese")
         self.append_log("Set language to Chinese")
-        QConfig.global_language = 'zh'
+        Qconfig.global_language = 'zh'
         self.change_lang("translations/zh.qm")
 
     def set_language_es(self):
         print("Set language to Spanish")
         self.append_log("Set language to Spanish")
-        QConfig.global_language = 'es'
+        Qconfig.global_language = 'es'
         self.change_lang("translations/es.qm")
 
     def open_help_markdown(self):
         print("Opening help markdown")
         self.append_log("Opening help markdown")
-        Utils.openfile_sys(QConfig.global_help_markdown_path)
+        Utils.openfile_sys(Qconfig.global_help_markdown_path)
 
     def open_help_html(self):
         print("Opening help html")
         self.append_log("Opening help html")
-        Utils.openfile_sys(QConfig.global_help_html_path)
+        Utils.openfile_sys(Qconfig.global_help_html_path)
 
     def about(self):
         self.setAutoFillBackground(True)
@@ -551,13 +551,13 @@ if __name__ == '__main__':
     # QApplication.setAttribute(Qt.HighDpiScaleFactorRoundingPolicy.PassThrough)
 
     # update path to absolute path
-    QConfig.global_resource_directory = Utils.update_path(
-        QConfig.global_resource_directory)
-    QConfig.global_image_path = Utils.update_path(QConfig.global_image_path)
-    QConfig.global_help_html_path = Utils.update_path(
-        QConfig.global_help_html_path)
-    QConfig.global_help_markdown_path = Utils.update_path(
-        QConfig.global_help_markdown_path)
+    Qconfig.global_resource_directory = Utils.update_path(
+        Qconfig.global_resource_directory)
+    Qconfig.global_image_path = Utils.update_path(Qconfig.global_image_path)
+    Qconfig.global_help_html_path = Utils.update_path(
+        Qconfig.global_help_html_path)
+    Qconfig.global_help_markdown_path = Utils.update_path(
+        Qconfig.global_help_markdown_path)
 
     logging.basicConfig(level=logging.DEBUG)
 
@@ -566,7 +566,7 @@ if __name__ == '__main__':
     # set up translation
     global g_translator
     g_translator = QTranslator()
-    if QConfig.global_language == 'zh':
+    if Qconfig.global_language == 'zh':
         g_translator.load("translations/zh.qm")
         app.installTranslator(g_translator)
 

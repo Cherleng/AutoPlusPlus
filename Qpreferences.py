@@ -49,11 +49,9 @@ class Preferences_win(QDialog, Ui_Dialog):
         selected_dir = QFileDialog.getExistingDirectory(self, "Open Directory")
         if not selected_dir:
             print("Open image directory failed")
-            self.append_log("Open image directory failed")
             return None
         else:
             print("selected: "+selected_dir)
-            self.append_log("selected: "+selected_dir)
             Config.global_resource_directory = selected_dir
             print("Current image directory is: " +
                   Config.global_resource_directory)

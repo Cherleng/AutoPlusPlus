@@ -18,6 +18,7 @@ import sys
 import time
 import logging
 import Qlogging
+import Qpreferences
 from PyQt5.QtGui import QIcon, QPalette, QImage, QPixmap
 from PyQt5.QtWidgets import (QApplication,
                              QWidget,
@@ -409,7 +410,8 @@ class MainWindow(QMainWindow):
     def set_preference(self):
         print("set_preference")
         self.append_log("set_preference")
-        pass
+        self.preference = Qpreferences.Preferences_win()
+        self.preference.show()
 
     def set_language_en(self):
         print("Set language to English")

@@ -1,3 +1,4 @@
+# makefile for the project
 RESFLAG =	\
 --add-data="Resources\\splashscr_864.png;Resources\\"  --add-data="style.qss;."	\
 --add-data="Resources\\Detection\\car20.jpg;Resources\\Detection\\"	\
@@ -12,7 +13,7 @@ TSDATAFLAG = --add-data="translations\\*.qm;translations\\"
 
 ICONDATAFLAG = --add-data="Resources\\*.ico;Resources\\"
 
-pyinstaller:
+pyinstaller:updts
 	pyinstaller --onedir --windowed main.py ${RESFLAG} ${HELPDATAFLAG} ${TSDATAFLAG} ${ICONDATAFLAG}
 
 test:
@@ -23,6 +24,8 @@ updts:
 	pylupdate5.exe main.py  -noobsolete -ts translations\\en.ts
 	pylupdate5.exe main.py  -noobsolete -ts translations\\es.ts
 
+genpref:
+	pyuic5.exe preferences.ui -o ui_preferences.py
 
 releasets:updts
 	lrelease translations\\*.ts

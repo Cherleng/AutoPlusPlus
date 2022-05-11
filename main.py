@@ -306,6 +306,10 @@ class MainWindow(QMainWindow):
             "MainWindow", "&Website"), self)
         self.acc_website.triggered.connect(self.open_website)
 
+        self.acc_online_help = QAction(QApplication.translate(
+            "MainWindow", "&Online Help"), self)
+        self.acc_online_help.triggered.connect(self.open_online_help)
+
         self.acc_help_md = QAction(
             QApplication.translate("MainWindow", "Show Help (&Markdown)"), self)
         self.acc_help_md.triggered.connect(self.open_help_markdown)
@@ -322,6 +326,7 @@ class MainWindow(QMainWindow):
         self.help_menu = menu.addMenu(
             QApplication.translate("MainWindow", "&Help"))
         self.help_menu.addAction(self.acc_website)
+        self.help_menu.addAction(self.acc_online_help)
         self.help_menu.addAction(self.acc_help_md)
         self.help_menu.addAction(self.acc_help_html)
         self.help_menu.addSeparator()
@@ -458,6 +463,10 @@ class MainWindow(QMainWindow):
         import webbrowser
         webbrowser.open("https://github.com/Cherleng/AutoPlusPlus")
 
+    def open_online_help(self):
+        import webbrowser
+        webbrowser.open("http://dynamiclab.xyz/Car++")
+
     def findQmFiles(self):
         trans_dir = QDir('translations')
         filename = trans_dir.entryList(['*.qm'], QDir.Files, QDir.Name)
@@ -521,6 +530,7 @@ class MainWindow(QMainWindow):
         self.help_menu.setTitle(_ts("MainWindow", "&Help"))
 
         self.acc_website.setText(_ts("MainWindow", "&Website"))
+        self.acc_online_help.setText(_ts("MainWindow", "&Online Help"))
         self.acc_help_md.setText(_ts("MainWindow", "Show Help (&Markdown)"))
         self.acc_help_html.setText(_ts("MainWindow", "Show Help (&HTML)"))
 

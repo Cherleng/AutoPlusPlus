@@ -439,12 +439,12 @@ class MainWindow(QMainWindow):
     def open_help_markdown(self):
         print("Opening help markdown")
         self.append_log("Opening help markdown")
-        Utils.openfile_sys(Qconfig.global_help_markdown_path)
+        Utils.openfile_sys("./Resources/help.md")
 
     def open_help_html(self):
         print("Opening help html")
         self.append_log("Opening help html")
-        Utils.openfile_sys(Qconfig.global_help_html_path)
+        Utils.openfile_sys("./Resources/help.html")
 
     def about(self):
         self.setAutoFillBackground(True)
@@ -550,10 +550,6 @@ if __name__ == '__main__':
     Qconfig.global_resource_directory = Utils.update_path(
         Qconfig.global_resource_directory)
     Qconfig.global_image_path = Utils.update_path(Qconfig.global_image_path)
-    Qconfig.global_help_html_path = Utils.update_path(
-        Qconfig.global_help_html_path)
-    Qconfig.global_help_markdown_path = Utils.update_path(
-        Qconfig.global_help_markdown_path)
 
     logging.basicConfig(level=logging.DEBUG)
 

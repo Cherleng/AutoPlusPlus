@@ -11,45 +11,86 @@ from PyQt5.QtCore import QSettings, QPoint
 
 
 """
-配置文件
 configuration
 """
 
 
+def clear_config():
+    """
+    clear all configuration, irreversibly
+    """
+    settings = QSettings("config.ini", QSettings.IniFormat)
+    settings.clear()
+    settings.sync()
+    del settings
+
+
+def reset_default():
+    """
+    reset to default configuration, irreversibly
+    """
+    clear_config()
+
+    updateConfig("lang", "zh")
+
+    updateConfig("Dir", "./Resources/Detection/")
+
+    updateConfig("img", "./Resources/Detection/car20.jpg")
+
+
 def __init__():
-    # 全局配置文件
+    """
+    load all the configuration to global variables
+    """
     settings = QSettings("config.ini", QSettings.IniFormat)
 
-    settings.beginGroup("language")
-
-    # 默认语言
     global global_language
-    global_language = "zh"
+    global_language = settings.value("lang")
 
-    settings.endGroup()
-
-    settings.beginGroup("resource")
-    # 默认目录位置
     global global_resource_directory
-    global_resource_directory = settings.value("global_resource_directory", "")
-    global_resource_directory = "./Resources/Detection/"
+    global_resource_directory = settings.value("Dir")
 
-    # 默认图片路径
     global global_image_path
-    global_image_path = './Resources/Detection/car20.jpg'
-    settings.endGroup()
+    global_image_path = settings.value("img")
 
-    # 进度条脉冲间隔
+    # shouldn't be visible to the user jaja
     global global_progress_bar_interval
     global_progress_bar_interval = 2
 
-    # 进度条步长
     global global_progress_bar_step
     global_progress_bar_step = 2
 
-    # help file
-    global global_help_markdown_path
-    global_help_markdown_path = "./Resources/help.md"
+    import time
+    updateConfig("last_access_time", time.asctime())
 
-    global global_help_html_path
-    global_help_html_path = "./Resources/help.html"
+
+def updateConfig(key, value):
+    """
+    update persistent configuration
+    create one if key not exist
+    """
+
+    current_settings = QSettings("config.ini", QSettings.IniFormat)
+
+    #current_settings.setValue(key, Qconfig.__dict__[key])
+    current_settings.setValue(key, value)
+
+    current_settings.sync()
+    del current_settings
+
+
+def test_Qconfig():
+    """
+    test Qconfig
+    """
+    import time
+    print("test Qconfig")
+    last_access_time = time.asctime()
+    print("last access time: " + last_access_time)
+
+    # update single configuration
+    updateConfig("last_access_time", last_access_time)
+
+
+if __name__ == "__main__":
+    test_Qconfig()

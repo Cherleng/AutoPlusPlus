@@ -56,6 +56,7 @@ make
 * [ ] add setup.py
 * [ ] complete readme
 * [ ] Splash Screen improvement
+* [ ] move translate() to another thread
 
 
 ## Contributors

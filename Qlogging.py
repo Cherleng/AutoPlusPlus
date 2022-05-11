@@ -3,7 +3,7 @@ __author__ = " Guixin Chen <Valentinofreeman@163.com>"
 __credits__ = ["Guixin Chen", "Jiehuang Liu",  "Mingkang Chen",
                "Shuailei Zhao", "HanZhen Fu"]
 __license__ = "MIT"
-__version__ = "0.0.8"
+__version__ = "0.0.9"
 __maintainer__ = "Guixin Chen, Jiehuang Liu "
 __email__ = "Valentinofreeman@163.com"
 __status__ = "Prototype"

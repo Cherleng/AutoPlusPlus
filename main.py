@@ -215,17 +215,17 @@ class MainWindow(QMainWindow):
         self.btnDetectImg.setMinimumSize(QSize(16*5, 9*5))
         self.btnDetectImg.clicked.connect(self.detect_img)
 
-        self.btn_get_result = QPushButton(
+        self.btnGetResult = QPushButton(
             QApplication.translate("MainWindow", "Result"))
-        self.btn_get_result.setObjectName("BtnGetResult")
-        self.btn_get_result.setMinimumSize(QSize(16*5, 9*5))
-        self.btn_get_result.clicked.connect(self.get_result)
-        self.btn_get_result.setEnabled(False)
+        self.btnGetResult.setObjectName("BtnGetResult")
+        self.btnGetResult.setMinimumSize(QSize(16*5, 9*5))
+        self.btnGetResult.clicked.connect(self.get_result)
+        self.btnGetResult.setEnabled(False)
 
         # img tab layout
         self.tab_img_layout = QVBoxLayout()
         self.tab_img_layout.addWidget(self.btnDetectImg)
-        self.tab_img_layout.addWidget(self.btn_get_result)
+        self.tab_img_layout.addWidget(self.btnGetResult)
 
         self.img_tab.setLayout(self.tab_img_layout)
 
@@ -349,7 +349,7 @@ class MainWindow(QMainWindow):
         self.append_log("detect_img: current image path: " +
                         Qconfig.global_image_path)
         print("detect_img: current image path: " + Qconfig.global_image_path)
-        self.btn_get_result.setEnabled(True)
+        self.btnGetResult.setEnabled(True)
         selected = carplate(Qconfig.global_image_path)
         #cv2.imshow("selected Rectangle", selected)
         self.result = result_windows(
@@ -477,73 +477,57 @@ class MainWindow(QMainWindow):
         super(MainWindow, self).changeEvent(event)
 
     def retranslateUi(self):
+        _ts = QApplication.translate
         # tabs
-        self.tabs.setTabText(self.tabs.indexOf(self.cam_tab), QApplication.translate(
-            "MainWindow", "Camera tab"))
-        self.tabs.setTabText(
-            self.tabs.indexOf(self.img_tab), QApplication.translate("MainWindow", "Image tab"))
         self.tabs.setTabText(self.tabs.indexOf(
-            self.log_tab), QApplication.translate("MainWindow", "Log tab"))
+            self.cam_tab), _ts("MainWindow", "Camera tab"))
+        self.tabs.setTabText(
+            self.tabs.indexOf(self.img_tab), _ts("MainWindow", "Image tab"))
+        self.tabs.setTabText(self.tabs.indexOf(
+            self.log_tab), _ts("MainWindow", "Log tab"))
 
         # widgets
-        self.btnOpenCamera.setText(
-            QApplication.translate("MainWindow", "Open Camera"))
-        self.btnOpenCamera.setToolTip(
-            QApplication.translate("MainWindow", "Open Camera"))
-        self.btnDetectImg.setText(
-            QApplication.translate("MainWindow", "Detect Image"))
-        self.btnDetectImg.setToolTip(
-            QApplication.translate("MainWindow", "Detect Image"))
-        self.btn_get_result.setToolTip(
-            QApplication.translate("MainWindow", "You have to detect image first"))
+        self.btnOpenCamera.setText(_ts("MainWindow", "Open Camera"))
+        self.btnOpenCamera.setToolTip(_ts("MainWindow", "Open Camera"))
+        self.btnDetectImg.setText(_ts("MainWindow", "Detect Image"))
+        self.btnDetectImg.setToolTip(_ts("MainWindow", "Detect Image"))
+        self.btnGetResult.setToolTip(
+            _ts("MainWindow", "You have to detect image first"))
 
         # menus
 
         # file menu
-        self.file_menu.setTitle(
-            QApplication.translate("MainWindow", "&File"))
+        self.file_menu.setTitle(_ts("MainWindow", "&File"))
 
         # works, deprecated
-        # self.file_menu.actions()[0].setText(QApplication.translate("MainWindow", "Open &Folder"))
+        # self.file_menu.actions()[0].setText(_ts("MainWindow", "Open &Folder"))
 
-        self.acc_open_dir.setText(
-            QApplication.translate("MainWindow", "Open &Folder"))
-        self.acc_open_dir.setStatusTip(QApplication.translate(
-            "MainWindow", "Open a folder to images"))
-        self.acc_open_img.setText(
-            QApplication.translate("MainWindow", "Open &Image"))
-        self.acc_open_img.setStatusTip(
-            QApplication.translate("MainWindow", "Open an image"))
+        self.acc_open_dir.setText(_ts("MainWindow", "Open &Folder"))
+        self.acc_open_dir.setStatusTip(
+            _ts("MainWindow", "Open a folder to images"))
+        self.acc_open_img.setText(_ts("MainWindow", "Open &Image"))
+        self.acc_open_img.setStatusTip(_ts("MainWindow", "Open an image"))
 
-        self.acc_exit.setText(QApplication.translate(
-            "MainWindow", "E&xit"))
+        self.acc_exit.setText(_ts("MainWindow", "E&xit"))
 
         # option menu
-        self.option_menu.setTitle(
-            QApplication.translate("MainWindow", "&Options"))
+        self.option_menu.setTitle(_ts("MainWindow", "&Options"))
 
-        self.acc_set_preference.setText(
-            QApplication.translate("MainWindow", "&Preferences"))
+        self.acc_set_preference.setText(_ts("MainWindow", "&Preferences"))
 
-        self.option_language_menu.setTitle(
-            QApplication.translate("MainWindow", "&Language"))
+        self.option_language_menu.setTitle(_ts("MainWindow", "&Language"))
 
         # help menu
-        self.help_menu.setTitle(
-            QApplication.translate("MainWindow", "&Help"))
+        self.help_menu.setTitle(_ts("MainWindow", "&Help"))
 
-        self.acc_website.setText(QApplication.translate(
-            "MainWindow", "&Website"))
-        self.acc_help_md.setText(QApplication.translate(
-            "MainWindow", "Show Help (&Markdown)"))
-        self.acc_help_html.setText(QApplication.translate(
-            "MainWindow", "Show Help (&HTML)"))
+        self.acc_website.setText(_ts("MainWindow", "&Website"))
+        self.acc_help_md.setText(_ts("MainWindow", "Show Help (&Markdown)"))
+        self.acc_help_html.setText(_ts("MainWindow", "Show Help (&HTML)"))
 
-        self.acc_about.setText(QApplication.translate(
-            "MainWindow", "&About"))
+        self.acc_about.setText(_ts("MainWindow", "&About"))
 
         # status bar
-        self.statusBar().showMessage(QApplication.translate("MainWindow", "Ready"))
+        self.statusBar().showMessage(_ts("MainWindow", "Ready"))
 
 
 if __name__ == '__main__':

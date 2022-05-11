@@ -134,6 +134,7 @@ key.py
 Resources/Detection/*
 Resources/translations/*.qm
 Split_Img/*
+Resources/Scan/*
 
 
 # excepetions

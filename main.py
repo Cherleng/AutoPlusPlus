@@ -10,6 +10,7 @@ __maintainer__ = "Jiehuang Liu, Guixin Chen"
 __email__ = "Valentinofreeman@163.com"
 __status__ = "Prototype"
 
+from email import utils
 from Carplate import *
 from cut_plate import ReadPlate
 import Qconfig
@@ -472,6 +473,23 @@ class MainWindow(QMainWindow):
         filename = trans_dir.entryList(['*.qm'], QDir.Files, QDir.Name)
         return [trans_dir.filePath(fn) for fn in filename]
 
+    def languageName(self, qmFile):
+        """
+        convert a qmfile name to languageName 
+        """
+        translator = QTranslator()
+        translator.load(qmFile)
+
+        return translator.translate("MainWindow", "English")
+
+    def qmName(self, tag) -> str:
+        """
+        convert a tag to qm file name
+        """
+        path = "translations/" + tag + ".qm"
+        if Utils.exists(path):
+            return path
+
     def change_lang(self, data):
         if Utils.exists(data):
             g_translator.load(data)
@@ -544,6 +562,7 @@ if __name__ == '__main__':
     # don't auto scale when drag app to a different monitor.
     # QApplication.setAttribute(Qt.HighDpiScaleFactorRoundingPolicy.PassThrough)
 
+    # load from ini file
     Qconfig.__init__()
 
     # update path to absolute path
@@ -558,8 +577,8 @@ if __name__ == '__main__':
     # set up translation
     global g_translator
     g_translator = QTranslator()
-    if Qconfig.global_language == 'zh':
-        g_translator.load("translations/zh.qm")
+    if Utils.exists(Qconfig.global_language):
+        g_translator.load(Qconfig.global_language)
         app.installTranslator(g_translator)
 
     # app.setStyle("windowsvista")

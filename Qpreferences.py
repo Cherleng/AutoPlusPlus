@@ -31,6 +31,7 @@ from PyQt5.QtWidgets import (QApplication,
 from PyQt5.QtCore import Qt, QTimer, QSize, QTranslator, QDir, QEvent
 from ui_preferences import Ui_Dialog
 import Qconfig
+import Utils
 
 
 class Preferences_win(QDialog, Ui_Dialog):
@@ -45,6 +46,17 @@ class Preferences_win(QDialog, Ui_Dialog):
         self.comboBox.addItems(self.findQmFiles())
 
         self.pushButtonCD.clicked.connect(self.open_dir)
+        self.pushButtonCI.clicked.connect(self.open_img)
+        self.comboBox.currentIndexChanged.connect(self.change_lang)
+
+    def change_lang(self):
+        """
+        change language
+        """
+        print("Changing language")
+        path = self.comboBox.currentText()
+        print("changing to: " + path)
+        Qconfig.updateConfig("lang", path)
 
     def open_dir(self):
         print("Opening image file directory")
@@ -57,10 +69,38 @@ class Preferences_win(QDialog, Ui_Dialog):
             Qconfig.global_resource_directory = selected_dir
             print("Current image directory is: " +
                   Qconfig.global_resource_directory)
-            self.append_log("Current image directory is: " +
-                            Qconfig.global_resource_directory)
+
+    def open_img(self):
+        print("Open image")
+        selected_img_name, file_type = QFileDialog.getOpenFileName(
+            self, "Open Image", filter='Image Files (*.png *.jpg *.jpeg *.bmp *.webp)')
+        if selected_img_name == '':
+            # open image file failed
+            print("Open image failed")
+            return None
+        else:
+            print("selected: "+selected_img_name)
+            Qconfig.global_image_path = selected_img_name
+            print("Current image path is: " + Qconfig.global_image_path)
 
     def findQmFiles(self):
         trans_dir = QDir('translations')
         filename = trans_dir.entryList(['*.qm'], QDir.Files, QDir.Name)
         return [trans_dir.filePath(fn) for fn in filename]
+
+    def languageName(self, qmFile):
+        """
+        convert a qmfile name to languageName 
+        """
+        translator = QTranslator()
+        translator.load(qmFile)
+
+        return translator.translate("MainWindow", "English")
+
+    def qmName(self, tag) -> str:
+        """
+        convert a tag to qm file name
+        """
+        path = "translations/" + tag + ".qm"
+        if Utils.exists(path):
+            return path

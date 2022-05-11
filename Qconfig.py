@@ -31,9 +31,9 @@ def reset_default():
     """
     clear_config()
 
-    updateConfig("lang", "zh")
+    updateConfig("lang", "translations/zh.qm")
 
-    updateConfig("Dir", "./Resources/Detection/")
+    updateConfig("RDir", "./Resources/Detection/")
 
     updateConfig("img", "./Resources/Detection/car20.jpg")
 
@@ -48,7 +48,7 @@ def __init__():
     global_language = settings.value("lang")
 
     global global_resource_directory
-    global_resource_directory = settings.value("Dir")
+    global_resource_directory = settings.value("RDir")
 
     global global_image_path
     global_image_path = settings.value("img")
@@ -93,4 +93,5 @@ def test_Qconfig():
 
 
 if __name__ == "__main__":
+    reset_default()
     test_Qconfig()

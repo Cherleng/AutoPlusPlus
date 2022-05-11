@@ -62,6 +62,8 @@ class Preferences_win(QDialog, Ui_Dialog):
         path = self.comboBox.currentText()
         print("changing to: " + path)
         Qconfig.updateConfig("lang", path)
+        self.plainTextEdit.setPlainText(
+            "Current Values:\n" + Qconfig.getConfig())
 
     def open_dir(self):
         print("Opening image file directory")
@@ -74,6 +76,8 @@ class Preferences_win(QDialog, Ui_Dialog):
             Qconfig.global_resource_directory = selected_dir
             print("Current image directory is: " +
                   Qconfig.global_resource_directory)
+        self.plainTextEdit.setPlainText(
+            "Current Values:\n" + Qconfig.getConfig())
 
     def open_img(self):
         print("Open image")
@@ -87,6 +91,9 @@ class Preferences_win(QDialog, Ui_Dialog):
             print("selected: "+selected_img_name)
             Qconfig.global_image_path = selected_img_name
             print("Current image path is: " + Qconfig.global_image_path)
+
+        self.plainTextEdit.setPlainText(
+            "Current Values:\n" + Qconfig.getConfig())
 
     def findQmFiles(self):
         trans_dir = QDir('translations')

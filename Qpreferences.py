@@ -49,6 +49,11 @@ class Preferences_win(QDialog, Ui_Dialog):
         self.pushButtonCI.clicked.connect(self.open_img)
         self.comboBox.currentIndexChanged.connect(self.change_lang)
 
+        # load default configuration to the plaintextedit
+
+        self.plainTextEdit.setPlainText(
+            "Current Values:\n" + Qconfig.getConfig())
+
     def change_lang(self):
         """
         change language

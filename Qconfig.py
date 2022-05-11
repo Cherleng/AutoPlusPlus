@@ -79,6 +79,14 @@ def updateConfig(key, value):
     del current_settings
 
 
+def getConfig() -> str:
+    """
+    get all configuration
+    """
+    settings = QSettings("config.ini", QSettings.IniFormat)
+    return settings.value("lang") + "\n" + settings.value("RDir") + "\n" + settings.value("img")
+
+
 def test_Qconfig():
     """
     test Qconfig

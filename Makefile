@@ -4,7 +4,7 @@ RESFLAG =	\
 --add-data="Resources\\Detection\\car20.jpg;Resources\\Detection\\"	\
 --add-data="Resources\\open_img.png;Resources\\" \
 --add-data="Resources\\about.jpg;Resources\\" \
---add-data="Resources\\haarcascade_licence_plate.xml;\\Resources\\" \
+--add-data="Resources\\haarcascade_licence_plate.xml;Resources\\" \
 --add-data="refer1\\;refer1\\" \
 --add-data="config.ini;." \
 

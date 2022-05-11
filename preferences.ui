@@ -463,6 +463,9 @@
          </disabled>
         </palette>
        </property>
+       <property name="autoFillBackground">
+        <bool>true</bool>
+       </property>
        <property name="text">
         <string>Default Directory</string>
        </property>
@@ -919,6 +922,9 @@
          </disabled>
         </palette>
        </property>
+       <property name="autoFillBackground">
+        <bool>true</bool>
+       </property>
        <property name="text">
         <string>Default image</string>
        </property>
@@ -1374,6 +1380,9 @@
           </colorrole>
          </disabled>
         </palette>
+       </property>
+       <property name="autoFillBackground">
+        <bool>true</bool>
        </property>
        <property name="text">
         <string>Language</string>

@@ -8,7 +8,7 @@ __email__ = "Valentinofreeman@163.com"
 __status__ = "Prototype"
 
 from PyQt5.QtCore import QSettings, QPoint
-
+import os
 
 """
 configuration
@@ -43,6 +43,9 @@ def __init__():
     load all the configuration to global variables
     """
     settings = QSettings("config.ini", QSettings.IniFormat)
+
+    if not os.path.exists("config.ini"):
+        reset_default()
 
     global global_language
     global_language = settings.value("lang")

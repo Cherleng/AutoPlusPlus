@@ -8,6 +8,8 @@ RESFLAG =	\
 --add-data="Resources\\haarcascade_licence_plate.xml;Resources\\" \
 --add-data="refer1\\;refer1\\" \
 --add-data="config.ini;." \
+--add-data="Resources\\Detection\\*.jpg;Resources\\Detection\\"	\
+--add-data="Resources\\Detection\\*.png;Resources\\Detection\\"	\
 
 HELPDATAFLAG = --add-data="Resources\\help.md;Resources\\" \
 --add-data="Resources\\help.html;Resources\\" \

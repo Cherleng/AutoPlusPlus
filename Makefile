@@ -2,7 +2,7 @@
 RESFLAG =	\
 --add-data="Resources\\splashscr_864.png;Resources\\"  --add-data="style.qss;."	\
 --add-data="Resources\\Detection\\car20.png;Resources\\Detection\\"	\
---add-data="Resources\\Detection\\car16.jpg;Resources\\Detection\\"	\
+--add-data="Resources\\Detection\\16.jpg;Resources\\Detection\\"	\
 --add-data="Resources\\open_img.png;Resources\\" \
 --add-data="Resources\\about.jpg;Resources\\" \
 --add-data="Resources\\haarcascade_licence_plate.xml;Resources\\" \

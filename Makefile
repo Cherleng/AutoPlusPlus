@@ -18,7 +18,7 @@ ICONDATAFLAG = --add-data="Resources\\*.ico;Resources\\"
 pyinstaller:updts
 	pyinstaller --onedir --windowed main.py ${RESFLAG} ${HELPDATAFLAG} ${TSDATAFLAG} ${ICONDATAFLAG}
 
-test:
+debug:
 	pyinstaller --onedir  main.py ${RESFLAG} ${HELPDATAFLAG} ${TSDATAFLAG} ${ICONDATAFLAG}
 
 updts:

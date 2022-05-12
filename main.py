@@ -389,7 +389,7 @@ class MainWindow(QMainWindow):
         print("Open image")
         self.append_log("Open image")
         selected_img_name, file_type = QFileDialog.getOpenFileName(
-            self, "Open Image", filter='Image Files (*.png *.jpg *.jpeg *.bmp *.webp)')
+            self, "Open Image", directory=Qconfig.global_resource_directory, filter='Image Files (*.png *.jpg *.jpeg *.bmp *.webp)')
         if selected_img_name == '':
             # open image file failed
             print("Open image failed")
@@ -407,7 +407,8 @@ class MainWindow(QMainWindow):
     def open_dir(self):
         print("Opening image file directory")
         self.append_log("Open image file directory")
-        selected_dir = QFileDialog.getExistingDirectory(self, "Open Directory")
+        selected_dir = QFileDialog.getExistingDirectory(
+            self, "Open Directory", directory=Qconfig.global_resource_directory)
         if not selected_dir:
             print("Open image directory failed")
             self.append_log("Open image directory failed")

@@ -114,7 +114,7 @@
         <translation>在线帮助[&amp;O]</translation>
     </message>
     <message>
-        <location filename="../main.py" line="491"/>
+        <location filename="../main.py" line="492"/>
         <source>English</source>
         <translation>简体中文</translation>
     </message>

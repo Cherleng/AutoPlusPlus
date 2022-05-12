@@ -114,7 +114,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.py" line="491"/>
+        <location filename="../main.py" line="492"/>
         <source>English</source>
         <translation type="unfinished"></translation>
     </message>

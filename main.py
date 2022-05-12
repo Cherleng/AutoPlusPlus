@@ -21,7 +21,7 @@ import logging
 import Qlogging
 import Qpreferences
 import VideoCapture
-from PyQt5.QtGui import QIcon, QPalette, QImage, QPixmap
+from PyQt5.QtGui import QIcon, QPalette, QImage, QPixmap, QFont
 from PyQt5.QtWidgets import (QApplication,
                              QWidget,
                              QPushButton,
@@ -66,6 +66,10 @@ class result_windows(QMainWindow):
         main_wid = QWidget()
 
         self.resultTextEdit = QTextEdit()
+        font = QFont()
+        font.setFamily("宋体")
+        font.setPointSize(18)
+        self.resultTextEdit.setFont(font)
         self.resultTextEdit.setText(plate_text)
 
         self.label = QLabel(QApplication.translate(

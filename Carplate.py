@@ -160,6 +160,6 @@ def carplate(img_path) -> np.ndarray[int, np.dtype[np.generic]]:
 
 
 if __name__ == '__main__':
-    img = carplate("Resources/Detection/car20.jpg")
+    img = carplate("Resources/Detection/car20.png")
     cv2.imshow("rectangle selected", img)
     cv2.waitKey(0)

@@ -138,6 +138,6 @@ Resources/Scan/*
 
 
 # excepetions
-!Resources/Detection/car20.jpg
+!Resources/Detection/car20.png
 !Resources/help.md
 !Resources/help.html

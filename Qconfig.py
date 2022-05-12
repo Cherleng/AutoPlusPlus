@@ -35,7 +35,7 @@ def reset_default():
 
     updateConfig("RDir", "./Resources/Detection/")
 
-    updateConfig("img", "./Resources/Detection/car20.jpg")
+    updateConfig("img", "./Resources/Detection/car20.png")
 
 
 def __init__():

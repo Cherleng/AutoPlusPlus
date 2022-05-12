@@ -44,7 +44,7 @@ def capture():
             count += 1
 
         if cv2.waitKey(1) & 0xFF == ord('q'):
-            exit()
+            break
 
 
 if __name__ == "__main__":

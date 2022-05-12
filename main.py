@@ -383,9 +383,10 @@ class MainWindow(QMainWindow):
         print("Opening camera")
         VideoCapture.capture()
 
-    # open image file and update config.global_image_path
-
     def open_img(self):
+        """
+        # open image file and update config.global_image_path
+        """
         print("Open image")
         self.append_log("Open image")
         selected_img_name, file_type = QFileDialog.getOpenFileName(

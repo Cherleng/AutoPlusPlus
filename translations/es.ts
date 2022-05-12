@@ -114,9 +114,14 @@
         <translation>Ayuda en &amp;linea</translation>
     </message>
     <message>
-        <location filename="../main.py" line="486"/>
+        <location filename="../main.py" line="491"/>
         <source>English</source>
         <translation>Español</translation>
+    </message>
+    <message>
+        <location filename="../main.py" line="375"/>
+        <source>Calculating</source>
+        <translation>Calculando</translation>
     </message>
 </context>
 <context>

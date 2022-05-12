@@ -3,7 +3,7 @@ import os
 import numpy as np
 
 
-def translate_plate():
+def translate_plate() -> str:
 
     # 模版匹配
     # 准备模板(template[0-9]为数字模板；)

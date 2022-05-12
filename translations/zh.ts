@@ -114,9 +114,14 @@
         <translation>在线帮助[&amp;O]</translation>
     </message>
     <message>
-        <location filename="../main.py" line="486"/>
+        <location filename="../main.py" line="491"/>
         <source>English</source>
         <translation>简体中文</translation>
+    </message>
+    <message>
+        <location filename="../main.py" line="375"/>
+        <source>Calculating</source>
+        <translation>计算中</translation>
     </message>
 </context>
 <context>

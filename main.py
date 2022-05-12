@@ -367,11 +367,16 @@ class MainWindow(QMainWindow):
         self.append_log("call get_result")
         print("call get_result")
         ReadPlate("Resources/Scan/NoPlate_1.jpg")
-        text = translate_plate()
+        from multiprocessing.pool import ThreadPool
+        pool = ThreadPool(processes=1)
+        async_result = pool.apply_async(translate_plate, ())
         # since ReadPlate return Broken image, we load image directly
         img_plate = cv2.imread("Resources/Scan/NoPlate_1.jpg")
-        self.result = result_windows(img_plate, text)
+        self.result = result_windows(
+            img_plate, QApplication.translate("MainWindow", "Calculating"))
         self.result.show()
+        QApplication.processEvents()
+        self.result.resultTextEdit.setText(async_result.get(timeout=25))
 
     def open_camera(self):
         self.append_log("Opening camera ...")
